@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Interactive 3D Hanging Receipt</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<main>
+  <section class="stage">
+    <canvas id="scene" aria-label="Interactive 3D hanging receipt cloth simulation"></canvas>
+    <div class="badge" id="statsBadge">XPBD Modular Physics · 35 × 75</div>
+    
+    <div class="control-panel">
+      <label>Light Dir</label>
+      <div class="knob-container" id="lightKnob" aria-label="Drag to rotate light direction">
+        <div class="knob-dial" id="knobDial"></div>
+      </div>
+    </div>
+  </section>
+  <div class="hint">Grab and drag the receipt. The new physics engine prevents crumpling and shearing.</div>
+</main>
+<script type="module" src="js/main.js?v=999"></script>
+</body>
+</html>
