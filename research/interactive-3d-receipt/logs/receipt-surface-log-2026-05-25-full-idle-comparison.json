@@ -1,0 +1,47 @@
+{
+  "sessionId": "synthetic-idle-comparison-2026-05-25",
+  "source": "browser_use_eval + observed debug overlay",
+  "url": "http://127.0.0.1:8024/index.html?surface=full&debug=1&log=1&material=heavy&shadow=off",
+  "createdAt": "2026-05-25T13:12:38Z",
+  "notes": [
+    "Deterministic idle comparison artifact captured after persistence instrumentation/tuning.",
+    "This is not a user-manipulated stress log; it is a reproducible full-mode idle/debug baseline for comparing new fields and cache behavior visibility.",
+    "Browser isolated-world access could not reach the page-world logger object directly, so this artifact records the observed debug overlay state instead of downloaded page JSON events."
+  ],
+  "events": [
+    {
+      "t": 0,
+      "type": "idle-debug-snapshot",
+      "mode": "full",
+      "material": "Heavy",
+      "shadow": "off",
+      "fps": 60,
+      "frameMs": 12.0,
+      "physicsMs": 12.0,
+      "contactPairs": 0,
+      "contactPasses": 3,
+      "vertexTriPairs": 0,
+      "edgeEdgePairs": 0,
+      "surfacePasses": 1,
+      "persistedContacts": 0,
+      "surfaceTriangleCandidates": 9825,
+      "surfaceEdgeCandidates": 14604,
+      "acceptedVertexTriContacts": 0,
+      "acceptedEdgeEdgeContacts": 0,
+      "surfaceCacheHits": 0,
+      "surfaceCacheMisses": 0,
+      "surfaceCacheWrites": 0,
+      "surfaceCacheRefreshes": 0,
+      "surfaceCacheNewEntries": 0,
+      "surfaceCacheSizeBeforeDecay": 0,
+      "surfaceCacheSizeAfterDecay": 0,
+      "surfaceCacheAgeEvictions": 0,
+      "surfaceCacheCapEvictions": 0,
+      "surfacePersistenceSkips": 0,
+      "surfacePersistenceBudgetPressure": 0,
+      "surfaceTriangleGridEntries": 5976,
+      "surfaceEdgeGridEntries": 4212,
+      "grab": null
+    }
+  ]
+}

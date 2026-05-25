@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Interactive 3D Hanging Receipt</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<main>
+  <section class="stage">
+    <canvas id="scene" aria-label="Interactive 3D hanging receipt cloth simulation"></canvas>
+    <div class="badge" id="statsBadge">Interactive 3D Hanging Receipt</div>
+    <div class="control-panel lab-panel" aria-label="Receipt lab controls">
+      <div class="panel-title">
+        <span>Receipt Lab</span>
+      </div>
+
+      <div class="control-row light-row">
+        <label>Light Dir</label>
+        <div class="knob-container" id="lightKnob" aria-label="Drag to rotate light direction">
+          <div class="knob-dial" id="knobDial"></div>
+        </div>
+      </div>
+
+      <div class="control-row material-bank" id="materialControls" aria-label="Paper material presets">
+        <label>Material</label>
+        <div class="key-bank material-keys">
+          <button class="material-key active" type="button" data-material="receipt">Receipt</button>
+          <button class="material-key" type="button" data-material="thin">Thin</button>
+          <button class="material-key" type="button" data-material="crisp">Crisp</button>
+          <button class="material-key" type="button" data-material="creased">Creased</button>
+          <button class="material-key" type="button" data-material="heavy">Heavy</button>
+        </div>
+      </div>
+
+      <div class="control-row shadow-bank" id="shadowControls" aria-label="Shadow quality selector">
+        <label>Shadow</label>
+        <div class="segmented-switch">
+          <button class="shadow-key" type="button" data-shadow="off">Off</button>
+          <button class="shadow-key" type="button" data-shadow="low">Low</button>
+          <button class="shadow-key" type="button" data-shadow="medium">Med</button>
+          <button class="shadow-key active" type="button" data-shadow="high">High</button>
+        </div>
+      </div>
+
+      <button class="reset-button" id="resetPaper" type="button">Reset Paper</button>
+    </div>
+  </section>
+  <div class="hint">Drag the receipt to shape it. Use the lab controls to change paper feel and shadows.</div>
+</main>
+<script type="module" src="js/main.js?v=13"></script>
+</body>
+</html>
