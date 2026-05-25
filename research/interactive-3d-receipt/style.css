@@ -35,7 +35,6 @@ canvas.grabbing { cursor:grabbing; }
 
 .hint { text-align:center; color:#88837a; font-size:16px; font-weight:500; letter-spacing:.03em; user-select:none; }
 .stage > canvas,
-.stage > .badge,
 .stage > .debug-panel {
   right:252px;
 }
@@ -185,7 +184,6 @@ canvas.grabbing { cursor:grabbing; }
   }
 
   .stage > canvas,
-  .stage > .badge,
   .stage > .debug-panel {
     right:236px;
   }
@@ -213,7 +211,6 @@ canvas.grabbing { cursor:grabbing; }
   }
 
   .stage > canvas,
-  .stage > .badge,
   .stage > .debug-panel {
     right:auto;
   }
