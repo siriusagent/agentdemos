@@ -57,3 +57,20 @@ Browser acceptance criteria:
 - Dragging the receipt moves the mesh without catastrophic stretching/crumpling.
 - Light direction knob changes shading.
 - No debug overlays or accidental test scripts are visible.
+
+## GitHub Pages deploy
+
+This demo is configured to publish from the repository subdirectory via GitHub Actions:
+
+- Workflow: `.github/workflows/interactive-3d-receipt-pages.yml`
+- Publish source: `research/interactive-3d-receipt/`
+
+After the workflow is pushed to GitHub, enable **Settings → Pages → Source: GitHub Actions** for the repository if it is not already enabled. Each push to `main` that changes this demo will publish an updated static site artifact.
+
+Expected public URL pattern:
+
+```text
+https://siriusagent.github.io/agentdemos/research/interactive-3d-receipt/
+```
+
+If the repository uses a different Pages configuration or custom domain, the final URL will differ accordingly.
