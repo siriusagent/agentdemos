@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Most Needed Vertical AI Agent Products in 2026</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: rgba(17, 24, 39, 0.78);
+      --panel-2: rgba(30, 41, 59, 0.72);
+      --text: #e5eefb;
+      --muted: #a9bad6;
+      --accent: #73e0a9;
+      --accent-2: #7cc7ff;
+      --warn: #ffd166;
+      --border: rgba(255, 255, 255, 0.12);
+      --shadow: 0 18px 48px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(124, 199, 255, 0.16), transparent 28%),
+        radial-gradient(circle at top right, rgba(115, 224, 169, 0.12), transparent 26%),
+        linear-gradient(180deg, #07101d 0%, #0b1020 45%, #0f172a 100%);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    a { color: var(--accent-2); }
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 72px 0 40px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(115, 224, 169, 0.09);
+      border: 1px solid rgba(115, 224, 169, 0.18);
+      border-radius: 999px;
+      padding: 8px 12px;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 4.8rem);
+      line-height: 0.98;
+      margin: 18px 0 18px;
+      max-width: 12ch;
+    }
+
+    .lede {
+      max-width: 860px;
+      font-size: 1.08rem;
+      color: var(--muted);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.45fr 0.95fr;
+      gap: 24px;
+      margin-top: 28px;
+      align-items: stretch;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .summary-card {
+      padding: 26px;
+    }
+
+    .summary-card h2,
+    section h2 {
+      font-size: 1.4rem;
+      margin: 0 0 14px;
+    }
+
+    .ranking-strip {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .mini-rank {
+      padding: 14px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(124, 199, 255, 0.09), rgba(124, 199, 255, 0.04));
+      border: 1px solid rgba(124, 199, 255, 0.14);
+    }
+
+    .mini-rank strong {
+      display: block;
+      font-size: 1.35rem;
+      color: white;
+      margin-bottom: 6px;
+    }
+
+    .method-card {
+      padding: 26px;
+      background: var(--panel-2);
+    }
+
+    .method-card ul,
+    .notes ul,
+    .source-list ol,
+    .signal-list,
+    .product-list,
+    .why-list {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    main {
+      padding: 32px 0 64px;
+    }
+
+    .section-block {
+      margin-top: 28px;
+      padding: 26px;
+    }
+
+    .rankings {
+      display: grid;
+      gap: 18px;
+    }
+
+    .ranking-card {
+      display: grid;
+      grid-template-columns: 92px 1.4fr 1fr;
+      gap: 20px;
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.72);
+    }
+
+    .ranking-card .rank {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(115, 224, 169, 0.16), rgba(124, 199, 255, 0.08));
+      border: 1px solid rgba(115, 224, 169, 0.18);
+      min-height: 124px;
+    }
+
+    .rank .num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: white;
+    }
+
+    .rank .score {
+      font-size: 0.88rem;
+      color: var(--accent);
+      margin-top: 6px;
+    }
+
+    .ranking-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.28rem;
+    }
+
+    .ranking-card p,
+    .ranking-card li,
+    .notes li,
+    .source-list li {
+      color: var(--muted);
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 14px;
+    }
+
+    .badge {
+      font-size: 0.78rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: #dce8f8;
+    }
+
+    .signal-box,
+    .product-box {
+      padding: 16px 18px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      margin-bottom: 12px;
+    }
+
+    .signal-box h4,
+    .product-box h4 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+      color: #fff;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .callout {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-left: 4px solid var(--warn);
+      background: rgba(255, 209, 102, 0.08);
+      color: #f7f0d0;
+      border-radius: 0 16px 16px 0;
+    }
+
+    footer {
+      padding: 18px 0 40px;
+      color: #92a6c7;
+      font-size: 0.92rem;
+    }
+
+    .source-list li { margin-bottom: 10px; }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .two-col,
+      .ranking-card {
+        grid-template-columns: 1fr;
+      }
+      .ranking-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .wrap { width: min(100% - 20px, 1180px); }
+      header { padding-top: 44px; }
+      .ranking-strip { grid-template-columns: 1fr; }
+      .section-block, .summary-card, .method-card, .ranking-card { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="eyebrow">2026 market scan · vertical AI agents</div>
+      <h1>Most needed vertical AI agent products in 2026</h1>
+      <p class="lede">
+        Based on current news coverage, vendor launches, enterprise surveys, and public social chatter, the strongest demand is not for generic “AI employees.”
+        It is for agents that sit inside costly, regulated, workflow-heavy functions and remove real operational drag. The highest-signal categories are healthcare admin,
+        finance and accounting operations, procurement, insurance workflows, legal and deal work, and support/service operations.
+      </p>
+
+      <div class="hero-grid">
+        <div class="card summary-card">
+          <h2>Executive take</h2>
+          <p>
+            The 2026 opportunity is concentrated where five conditions overlap: repetitive expert work, fragmented systems, high labor cost, compliance pressure, and measurable ROI.
+            That pushes the market toward vertical agents that can work with real documents, policies, spreadsheets, tickets, claims, contracts, and operational systems—not just chat.
+          </p>
+          <div class="ranking-strip">
+            <div class="mini-rank"><strong>#1</strong>Healthcare admin</div>
+            <div class="mini-rank"><strong>#2</strong>Finance ops</div>
+            <div class="mini-rank"><strong>#3</strong>Procurement</div>
+            <div class="mini-rank"><strong>#4</strong>Insurance</div>
+            <div class="mini-rank"><strong>#5</strong>Legal / deals</div>
+          </div>
+        </div>
+
+        <div class="card method-card">
+          <h2>How this ranking was formed</h2>
+          <ul>
+            <li>Reviewed 2025–2026 official announcements and reports from OpenAI, Anthropic, SAP, IBM, Cisco, and Accenture.</li>
+            <li>Checked social/distribution signals surfaced through X, LinkedIn, and Reddit search results.</li>
+            <li>Weighted categories by urgency, spend ownership, workflow pain, regulatory friction, and evidence of live deployment.</li>
+            <li>Treated social-media discussion as directional signal, not proof.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section class="card section-block">
+        <h2>What the signal stack says</h2>
+        <div class="two-col">
+          <div>
+            <div class="signal-box">
+              <h4>1. Regulated operations are pulling ahead</h4>
+              <ul class="signal-list">
+                <li>Healthcare, finance, insurance, and legal keep appearing in launches because generic copilots are not enough for domain-specific workflows.</li>
+                <li>Enterprise buyers want governance, audit logs, permissions, and source-linked outputs.</li>
+              </ul>
+            </div>
+            <div class="signal-box">
+              <h4>2. The wedge is back-office throughput</h4>
+              <ul class="signal-list">
+                <li>Most credible launches target admin burden, reconciliation, KYC, document review, procurement, claims, and support workflows.</li>
+                <li>These have near-term ROI because time saved and error reduction are visible.</li>
+              </ul>
+            </div>
+            <div class="signal-box">
+              <h4>3. Winning agents are system-native</h4>
+              <ul class="signal-list">
+                <li>The strongest products connect into Excel, PowerPoint, ERP, data rooms, CRMs, claims stacks, or clinical systems.</li>
+                <li>Products framed as “assistant inside existing work” look stronger than standalone agent fantasies.</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="signal-box">
+              <h4>4. Social conversation converges on the same sectors</h4>
+              <ul class="signal-list">
+                <li>X and LinkedIn chatter repeatedly highlights healthcare, legal, finance, insurance, logistics, and procurement as the places horizontal models will not go deep enough.</li>
+                <li>Reddit discussions are noisier, but still cluster around healthcare, legal, accounting, and vertical SaaS demand.</li>
+              </ul>
+            </div>
+            <div class="signal-box">
+              <h4>5. Demand is shifting from “chat” to workflow completion</h4>
+              <ul class="signal-list">
+                <li>Announcements increasingly describe agents that prepare filings, close books, reconcile ledgers, review statements, route approvals, or assemble clinical/admin outputs.</li>
+                <li>That is a stronger demand signal than generic productivity claims.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card section-block">
+        <h2>Ranked opportunities</h2>
+        <div class="rankings">
+          <article class="ranking-card">
+            <div class="rank"><div class="num">1</div><div class="score">Need score: 9.6/10</div></div>
+            <div>
+              <h3>Healthcare administrative and clinical workflow agents</h3>
+              <p>
+                Healthcare is the clearest 2026 wedge because the pain is extreme, the labor burden is expensive, and the work is structured enough to automate with guardrails.
+                The most needed products are not autonomous diagnosticians; they are agents that cut administrative load while staying clinician-supervised.
+              </p>
+              <div class="badge-row">
+                <span class="badge">Prior authorization</span>
+                <span class="badge">Clinical documentation</span>
+                <span class="badge">Discharge workflows</span>
+                <span class="badge">Chart summarization</span>
+                <span class="badge">Care coordination</span>
+              </div>
+              <div class="callout">
+                Strongest evidence: OpenAI launched <em>OpenAI for Healthcare</em> in January 2026, explicitly positioning secure AI around admin reduction, clinical workflows, citations, governance, and HIPAA-supporting controls.
+              </div>
+            </div>
+            <div>
+              <div class="product-box">
+                <h4>Most needed product shapes</h4>
+                <ul class="product-list">
+                  <li>Prior-auth and referral preparation agents</li>
+                  <li>Documentation/drafting agents for discharge summaries and letters</li>
+                  <li>Patient-message triage and routing agents</li>
+                  <li>Evidence-grounded care-pathway assistants inside enterprise workspaces</li>
+                </ul>
+              </div>
+              <div class="product-box">
+                <h4>Why now</h4>
+                <ul class="why-list">
+                  <li>Admin overload is chronic and measurable</li>
+                  <li>Hospitals need compliant deployment models</li>
+                  <li>Workflows are repetitive but high stakes</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="ranking-card">
+            <div class="rank"><div class="num">2</div><div class="score">Need score: 9.3/10</div></div>
+            <div>
+              <h3>Finance and accounting operations agents</h3>
+              <p>
+                Finance has unusually strong signal because the work is document-heavy, spreadsheet-heavy, deadline-driven, and governed. The market is moving beyond memo-writing into agents that actually reconcile, review, close, model, and package outputs.
+              </p>
+              <div class="badge-row">
+                <span class="badge">Month-end close</span>
+                <span class="badge">GL reconciliation</span>
+                <span class="badge">Financial modeling</span>
+                <span class="badge">Statement review</span>
+                <span class="badge">Treasury / CFO ops</span>
+              </div>
+              <div class="callout">
+                Strongest evidence: Anthropic released ten ready-to-run finance agent templates in May 2026, including month-end closer, general ledger reconciler, statement auditor, valuation reviewer, and KYC screener.
+              </div>
+            </div>
+            <div>
+              <div class="product-box">
+                <h4>Most needed product shapes</h4>
+                <ul class="product-list">
+                  <li>Close and reconciliation agents</li>
+                  <li>Spreadsheet-native analyst agents inside Excel/PowerPoint</li>
+                  <li>Compliance/KYC packaging agents</li>
+                  <li>CFO-office workflow agents for forecast, control, and review loops</li>
+                </ul>
+              </div>
+              <div class="product-box">
+                <h4>Why now</h4>
+                <ul class="why-list">
+                  <li>Clear ROI in hours saved per reporting cycle</li>
+                  <li>Fits existing desktop workflow instead of replacing it</li>
+                  <li>Buyers already accept heavy governance in this function</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="ranking-card">
+            <div class="rank"><div class="num">3</div><div class="score">Need score: 9.1/10</div></div>
+            <div>
+              <h3>Procurement and spend-management agents</h3>
+              <p>
+                Procurement is one of the highest-conviction verticals because it combines policy constraints, fragmented supplier data, repetitive approvals, and large dollar leverage. It is exactly the kind of business function where “agent completes the workflow” beats “copilot suggests text.”
+              </p>
+              <div class="badge-row">
+                <span class="badge">Source-to-pay</span>
+                <span class="badge">Bid analysis</span>
+                <span class="badge">Policy compliance</span>
+                <span class="badge">Supplier risk</span>
+                <span class="badge">Invoice creation</span>
+              </div>
+              <div class="callout">
+                Strongest evidence: SAP’s 2026 Ariba and spend-management announcements explicitly push Joule agents into purchasing, policy management, bid analysis, document traceability, and autonomous spend workflows.
+              </div>
+            </div>
+            <div>
+              <div class="product-box">
+                <h4>Most needed product shapes</h4>
+                <ul class="product-list">
+                  <li>Purchasing-policy enforcement agents</li>
+                  <li>Supplier evaluation and award recommendation agents</li>
+                  <li>Spend orchestration agents across ERP, contracts, and catalogs</li>
+                  <li>Procurement research/risk agents for supplier due diligence</li>
+                </ul>
+              </div>
+              <div class="product-box">
+                <h4>Why now</h4>
+                <ul class="why-list">
+                  <li>Direct tie to savings and leakage reduction</li>
+                  <li>Clear approvals chain and auditable decisions</li>
+                  <li>Big incumbents are validating the category</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="ranking-card">
+            <div class="rank"><div class="num">4</div><div class="score">Need score: 8.9/10</div></div>
+            <div>
+              <h3>Insurance underwriting, claims, and servicing agents</h3>
+              <p>
+                Insurance keeps showing up because it sits at the intersection of structured workflows, document review, compliance, and customer-facing latency. The best near-term products focus on claims intake, case handling, renewals, endorsements, underwriting support, and risk review.
+              </p>
+              <div class="badge-row">
+                <span class="badge">Claims processing</span>
+                <span class="badge">Underwriting support</span>
+                <span class="badge">Policy servicing</span>
+                <span class="badge">Risk analysis</span>
+                <span class="badge">Customer operations</span>
+              </div>
+              <div class="callout">
+                Strongest evidence: Accenture’s Lyzr announcement called out insurance workflows such as claims processing, renewals, endorsements, and customer support; Anthropic also added Verisk data access for underwriting and claims use cases.
+              </div>
+            </div>
+            <div>
+              <div class="product-box">
+                <h4>Most needed product shapes</h4>
+                <ul class="product-list">
+                  <li>FNOL and claims-triage agents</li>
+                  <li>Underwriting file assembly and risk-summary agents</li>
+                  <li>Servicing agents for mid-term policy changes</li>
+                  <li>Carrier/broker operations copilots with action-taking ability</li>
+                </ul>
+              </div>
+              <div class="product-box">
+                <h4>Why now</h4>
+                <ul class="why-list">
+                  <li>High document volume and repetitive review work</li>
+                  <li>Long cycle times hurt both margin and customer satisfaction</li>
+                  <li>Specialized third-party data makes the agent more defensible</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="ranking-card">
+            <div class="rank"><div class="num">5</div><div class="score">Need score: 8.8/10</div></div>
+            <div>
+              <h3>Legal, diligence, and deal-work agents</h3>
+              <p>
+                Legal is one of the most obvious vertical-agent markets because firms are buried in contracts, filings, precedent, diligence materials, and review loops. Social-media discussion and vendor case studies both point here repeatedly.
+              </p>
+              <div class="badge-row">
+                <span class="badge">Contract review</span>
+                <span class="badge">Due diligence</span>
+                <span class="badge">Data room analysis</span>
+                <span class="badge">Regulatory filings</span>
+                <span class="badge">Negotiation prep</span>
+              </div>
+              <div class="callout">
+                Strongest evidence: OpenAI’s Hebbia case study claims deep research automates 90% of finance and legal work, with measurable savings in diligence, document review, and law-firm workflows.
+              </div>
+            </div>
+            <div>
+              <div class="product-box">
+                <h4>Most needed product shapes</h4>
+                <ul class="product-list">
+                  <li>Contract abstraction and clause-risk agents</li>
+                  <li>Deal diligence and virtual data room agents</li>
+                  <li>Matter-research and precedent synthesis agents</li>
+                  <li>Source-cited negotiation support agents</li>
+                </ul>
+              </div>
+              <div class="product-box">
+                <h4>Why now</h4>
+                <ul class="why-list">
+                  <li>Unstructured private documents are the core bottleneck</li>
+                  <li>Hours saved map directly to billable or deal economics</li>
+                  <li>Multi-agent retrieval/orchestration matters here more than generic chat</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="ranking-card">
+            <div class="rank"><div class="num">6</div><div class="score">Need score: 8.3/10</div></div>
+            <div>
+              <h3>Customer support and service-ops agents</h3>
+              <p>
+                This is a very large market, but slightly less differentiated than the top five because many vendors are already swarming it. Still, the demand is undeniable, especially for complex B2B service environments where agents can triage, resolve, and escalate with context.
+              </p>
+              <div class="badge-row">
+                <span class="badge">Contact center</span>
+                <span class="badge">Ticket triage</span>
+                <span class="badge">Knowledge retrieval</span>
+                <span class="badge">Case resolution</span>
+                <span class="badge">Escalation management</span>
+              </div>
+              <div class="callout">
+                Strongest evidence: Cisco reported customers expect 68% of support interactions with technology vendors to be handled through agentic AI by 2028, with 56% expected within the next 12 months.
+              </div>
+            </div>
+            <div>
+              <div class="product-box">
+                <h4>Most needed product shapes</h4>
+                <ul class="product-list">
+                  <li>B2B support agents with system/action integrations</li>
+                  <li>Technical troubleshooting agents for enterprise environments</li>
+                  <li>Customer-success agents that proactively detect risk/opportunity</li>
+                  <li>Hybrid human+agent casework systems</li>
+                </ul>
+              </div>
+              <div class="product-box">
+                <h4>Why not higher</h4>
+                <ul class="why-list">
+                  <li>Huge demand, but more crowded and more horizontalized</li>
+                  <li>Differentiation often comes from workflow depth or vertical data</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="card section-block notes">
+        <h2>What is probably overhyped</h2>
+        <ul>
+          <li><strong>Generic “do-everything” agents:</strong> strong narrative, weaker proof of repeatable enterprise value.</li>
+          <li><strong>Fully autonomous high-stakes decision-makers:</strong> buyers still want humans in the loop for legal, clinical, financial, and claims decisions.</li>
+          <li><strong>Pure chat wrappers:</strong> the market reward is shifting toward products embedded in systems of record and operational workflows.</li>
+        </ul>
+      </section>
+
+      <section class="card section-block source-list">
+        <h2>Key sources used in this scan</h2>
+        <ol>
+          <li><a href="https://openai.com/index/openai-for-healthcare/">OpenAI — Introducing OpenAI for Healthcare (Jan 8, 2026)</a></li>
+          <li><a href="https://www.anthropic.com/news/finance-agents">Anthropic — Agents for financial services (May 5, 2026)</a></li>
+          <li><a href="https://openai.com/index/hebbia/">OpenAI — Hebbia deep research for finance and legal work</a></li>
+          <li><a href="https://news.sap.com/2026/05/enabling-autonomous-spend-management-ai-connected-processes/">SAP — Enabling Autonomous Spend Management (2026 search result / announcement)</a></li>
+          <li><a href="https://news.sap.com/2026/03/next-gen-sap-ariba-foundation-for-intelligent-procurement/">SAP — Next-gen SAP Ariba: intelligent procurement</a></li>
+          <li><a href="https://newsroom.ibm.com/2025-06-10-IBM-Study-Businesses-View-AI-Agents-as-Essential,-Not-Just-Experimental">IBM — Businesses view AI agents as essential, not just experimental</a></li>
+          <li><a href="https://newsroom.accenture.com/news/2025/accenture-expands-ai-refinery-and-launches-new-industry-agent-solutions-to-accelerate-agentic-ai-adoption">Accenture — AI Refinery and industry agent solutions</a></li>
+          <li><a href="https://newsroom.accenture.com/news/2025/accenture-invests-in-lyzr-to-bring-agentic-ai-to-banking-and-insurance-companies">Accenture — Lyzr for banking and insurance agentic AI</a></li>
+          <li><a href="https://newsroom.cisco.com/c/r/newsroom/en/us/a/y2025/m05/agentic-ai-poised-to-handle-68-of-customer-service-and-support-interactions-by-2028.html">Cisco — Agentic AI and customer service/support demand</a></li>
+          <li>Supplementary directional signal: X, LinkedIn, and Reddit search results related to vertical AI agents across healthcare, legal, finance, insurance, logistics, and procurement.</li>
+        </ol>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      Created locally by Sirius on May 23, 2026. This page is a synthesis of public signals, not investment advice or a market-size model.
+    </div>
+  </footer>
+</body>
+</html>

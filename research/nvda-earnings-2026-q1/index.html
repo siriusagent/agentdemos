@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NVDA Q1 FY2027 — Investment Committee Brief</title>
+  <style>
+    :root {
+      --bg: #03050b;
+      --bg-soft: #07101d;
+      --ink: #f5f7fb;
+      --muted: #9ba8bf;
+      --muted-2: #75839f;
+      --line: rgba(255,255,255,0.09);
+      --line-strong: rgba(255,255,255,0.16);
+      --green: #9cf7c7;
+      --blue: #8bb7ff;
+      --gold: #f2cc84;
+      --red: #ff9e9e;
+      --shadow: 0 32px 90px rgba(0,0,0,.38);
+      --max: 1320px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 15% 18%, rgba(139,183,255,.10), transparent 24%),
+        radial-gradient(circle at 85% 10%, rgba(156,247,199,.08), transparent 22%),
+        linear-gradient(180deg, #03050b 0%, #07101b 40%, #03050b 100%);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; }
+
+    .progress {
+      position: fixed;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 3px;
+      background: rgba(255,255,255,.03);
+      z-index: 120;
+    }
+
+    .progress > div {
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, var(--blue), var(--green));
+      box-shadow: 0 0 18px rgba(156,247,199,.45);
+    }
+
+    .frame {
+      position: relative;
+      min-height: 100svh;
+      padding: 26px clamp(18px, 3vw, 34px) 48px;
+      overflow: hidden;
+    }
+
+    .frame::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: linear-gradient(180deg, rgba(255,255,255,.55), transparent 88%);
+      pointer-events: none;
+    }
+
+    .shell {
+      position: relative;
+      max-width: var(--max);
+      margin: 0 auto;
+      z-index: 1;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 22px;
+      padding-bottom: 26px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      box-shadow: 0 0 18px rgba(156,247,199,.65);
+      flex: 0 0 auto;
+    }
+
+    .brand-meta {
+      min-width: 0;
+    }
+
+    .brand-meta strong,
+    .brand-meta span {
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .brand-meta strong {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      color: var(--ink);
+    }
+
+    .brand-meta span {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+      letter-spacing: .04em;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      position: relative;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, var(--green), transparent);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 180ms ease;
+    }
+
+    .nav a:hover::after { transform: scaleX(1); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(360px, .85fr);
+      gap: clamp(26px, 4vw, 56px);
+      align-items: end;
+      padding-top: 9vh;
+      padding-bottom: 6vh;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      font-size: 12px;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: rise .7s ease forwards .05s;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 42px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--green), transparent);
+    }
+
+    .hero h1 {
+      margin: 18px 0 0;
+      max-width: 10ch;
+      font-size: clamp(3.2rem, 8vw, 7.3rem);
+      line-height: .95;
+      letter-spacing: -.055em;
+      opacity: 0;
+      transform: translateY(26px);
+      animation: rise .9s cubic-bezier(.2,.8,.2,1) forwards .14s;
+    }
+
+    .hero p.lead {
+      margin: 26px 0 0;
+      max-width: 62ch;
+      color: #dde5f5;
+      font-size: clamp(1.02rem, 2vw, 1.18rem);
+      line-height: 1.82;
+      opacity: 0;
+      transform: translateY(22px);
+      animation: rise .8s ease forwards .3s;
+    }
+
+    .cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+      opacity: 0;
+      transform: translateY(22px);
+      animation: rise .8s ease forwards .42s;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: .95rem;
+      transition: transform .16s ease, background .16s ease, box-shadow .16s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      color: #021009;
+      background: linear-gradient(135deg, var(--green), #d8ffe9);
+      box-shadow: 0 18px 42px rgba(156,247,199,.22);
+    }
+
+    .btn-secondary {
+      color: var(--ink);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      backdrop-filter: blur(10px);
+    }
+
+    .panel {
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(7,14,26,.86), rgba(5,9,18,.66));
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .scorecard {
+      padding: 26px 26px 22px;
+      opacity: 0;
+      transform: translateY(28px) scale(.985);
+      animation: rise .95s cubic-bezier(.2,.8,.2,1) forwards .28s;
+    }
+
+    .scorecard .meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 14px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 16px;
+    }
+
+    .scorecard .meta small {
+      display: block;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: 11px;
+      margin-bottom: 7px;
+    }
+
+    .scorecard .meta strong {
+      display: block;
+      font-size: 1.9rem;
+      letter-spacing: -.04em;
+    }
+
+    .pill {
+      white-space: nowrap;
+      align-self: center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-weight: 700;
+      background: linear-gradient(135deg, rgba(156,247,199,.16), rgba(139,183,255,.16));
+      border: 1px solid rgba(156,247,199,.22);
+      color: var(--green);
+    }
+
+    .metrics {
+      display: grid;
+      gap: 10px;
+    }
+
+    .metric {
+      display: grid;
+      grid-template-columns: 1.1fr .85fr auto;
+      gap: 12px;
+      align-items: baseline;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    .metric .k {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .metric .v {
+      font-weight: 700;
+      letter-spacing: -.02em;
+    }
+
+    .metric .d {
+      color: var(--green);
+      font-weight: 700;
+      font-size: .92rem;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+    }
+
+    section {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 84px clamp(18px, 3vw, 34px) 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(300px, .85fr);
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+
+    .kicker {
+      margin-bottom: 14px;
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      font-size: 12px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2.15rem, 5vw, 4.2rem);
+      line-height: .98;
+      letter-spacing: -.05em;
+      max-width: 11ch;
+    }
+
+    .section-head p,
+    .body-copy,
+    .subcopy {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.82;
+      font-size: 1rem;
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .fact {
+      padding-top: 20px;
+      border-top: 1px solid var(--line-strong);
+      position: relative;
+    }
+
+    .fact::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: -1px;
+      width: 54px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--green), transparent);
+    }
+
+    .fact small {
+      display: block;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: .74rem;
+      margin-bottom: 10px;
+    }
+
+    .fact strong {
+      display: block;
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      letter-spacing: -.06em;
+      margin-bottom: 8px;
+    }
+
+    .fact p {
+      margin: 0;
+      color: #d9e2f4;
+      line-height: 1.72;
+      font-size: .96rem;
+    }
+
+    .committee-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+      gap: 34px;
+      align-items: start;
+      margin-top: 24px;
+    }
+
+    .ledger {
+      padding: 26px 0 0;
+    }
+
+    .ledger-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: center;
+      padding: 16px 0;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    .ledger-row:first-child { border-top: 1px solid var(--line-strong); }
+
+    .ledger-row strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 5px;
+      letter-spacing: -.02em;
+    }
+
+    .ledger-row span {
+      display: block;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: .94rem;
+      max-width: 52ch;
+    }
+
+    .ledger-row em {
+      font-style: normal;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -.03em;
+    }
+
+    .deep-panel {
+      padding: 26px;
+      min-height: 100%;
+    }
+
+    .deep-panel h3 {
+      margin: 0 0 14px;
+      font-size: 1.45rem;
+      letter-spacing: -.03em;
+    }
+
+    .deep-panel p {
+      margin: 0 0 15px;
+      color: #d8e1f2;
+      line-height: 1.82;
+    }
+
+    .split-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .micro {
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    .micro small {
+      display: block;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: .72rem;
+      margin-bottom: 8px;
+    }
+
+    .micro strong {
+      display: block;
+      font-size: 1.7rem;
+      letter-spacing: -.04em;
+      margin-bottom: 8px;
+    }
+
+    .micro p {
+      margin: 0;
+      font-size: .93rem;
+      line-height: 1.7;
+      color: #d9e2f4;
+    }
+
+    .call-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 22px;
+      margin-top: 26px;
+    }
+
+    .call-card {
+      padding-top: 18px;
+      border-top: 1px solid var(--line-strong);
+    }
+
+    .call-card .label {
+      display: block;
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: .75rem;
+      margin-bottom: 10px;
+    }
+
+    .call-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.25rem;
+      letter-spacing: -.03em;
+    }
+
+    .call-card p {
+      margin: 0;
+      color: #d9e2f4;
+      line-height: 1.75;
+      font-size: .95rem;
+    }
+
+    .source-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .source {
+      display: grid;
+      grid-template-columns: minmax(0,1fr) auto;
+      gap: 18px;
+      align-items: start;
+      padding: 18px 0;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    .source strong {
+      display: block;
+      margin-bottom: 6px;
+      letter-spacing: -.02em;
+    }
+
+    .source span {
+      color: var(--muted);
+      line-height: 1.72;
+      font-size: .95rem;
+    }
+
+    .source a {
+      color: var(--green);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: .95rem;
+      white-space: nowrap;
+    }
+
+    .footer {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 88px clamp(18px, 3vw, 34px) 110px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+      border-top: 1px solid var(--line);
+      margin-top: 90px;
+    }
+
+    .footer h3 {
+      margin: 0 0 10px;
+      font-size: clamp(1.7rem, 4vw, 2.9rem);
+      letter-spacing: -.05em;
+    }
+
+    .footer p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.82;
+      max-width: 60ch;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .8s ease, transform .8s ease;
+      will-change: opacity, transform;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes rise {
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @media (max-width: 1180px) {
+      .hero,
+      .section-head,
+      .committee-grid,
+      .footer {
+        grid-template-columns: 1fr;
+      }
+
+      .facts { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .call-grid { grid-template-columns: 1fr; }
+      .split-2 { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .nav { gap: 12px; }
+      .facts { grid-template-columns: 1fr; }
+      .metric { grid-template-columns: 1fr; gap: 6px; }
+      .source { grid-template-columns: 1fr; }
+      .cta { flex-direction: column; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress"><div id="progressBar"></div></div>
+
+  <div class="frame" id="top">
+    <div class="shell">
+      <div class="topbar">
+        <div class="brand">
+          <span class="brand-mark"></span>
+          <div class="brand-meta">
+            <strong>NVDA Investment Committee Brief</strong>
+            <span>Q1 FY2027 · primary-source earnings analysis</span>
+          </div>
+        </div>
+        <nav class="nav">
+          <a href="#snapshot">Snapshot</a>
+          <a href="#drivers">Drivers</a>
+          <a href="#risk">Risk</a>
+          <a href="#call">Call</a>
+          <a href="#sources">Sources</a>
+        </nav>
+      </div>
+
+      <div class="hero">
+        <div>
+          <div class="eyebrow">latest reported quarter · quarter ended april 26, 2026</div>
+          <h1>NVIDIA is still growing at a rate that should not be possible at this scale.</h1>
+          <p class="lead">
+            Revenue reached <strong>$81.6B</strong>. Data Center reached <strong>$75.2B</strong>. Free cash flow reached
+            <strong>$48.6B</strong>. The internal mix across hyperscale and non-hyperscale AI infrastructure is broadening,
+            networking is becoming more strategic, and gross margins held near <strong>75%</strong> during the Blackwell ramp.
+            This is a serious quarter. The stock is still buyable — but only with respect for concentration, policy, and valuation risk.
+          </p>
+          <div class="cta">
+            <a class="btn btn-primary" href="#call">Read the call</a>
+            <a class="btn btn-secondary" href="notes.md">Open full research notes</a>
+          </div>
+        </div>
+
+        <aside class="panel scorecard">
+          <div class="meta">
+            <div>
+              <small>Committee view</small>
+              <strong>Buy / Outperform</strong>
+            </div>
+            <div class="pill">premium franchise</div>
+          </div>
+          <div class="metrics">
+            <div class="metric"><span class="k">Revenue</span><span class="v">$81.6B</span><span class="d">+85% Y/Y</span></div>
+            <div class="metric"><span class="k">Data Center</span><span class="v">$75.2B</span><span class="d">+92% Y/Y</span></div>
+            <div class="metric"><span class="k">Hyperscale</span><span class="v">$37.9B</span><span class="d">~50% of DC</span></div>
+            <div class="metric"><span class="k">ACIE</span><span class="v">$37.4B</span><span class="d">+31% Q/Q</span></div>
+            <div class="metric"><span class="k">DC networking</span><span class="v">$14.8B</span><span class="d">+199% Y/Y</span></div>
+            <div class="metric"><span class="k">Gross margin</span><span class="v">74.9%</span><span class="d">stable</span></div>
+            <div class="metric"><span class="k">Free cash flow</span><span class="v">$48.6B</span><span class="d">very high</span></div>
+            <div class="metric"><span class="k">Q2 guide</span><span class="v">$91.0B ±2%</span><span class="d">no China DC compute assumed</span></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section id="snapshot" class="reveal">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Snapshot</div>
+          <h2>The quarter in committee language.</h2>
+        </div>
+        <p>
+          This was not a “good print.” It was a confirmation that NVIDIA remains the cleanest public-market capture point for AI infrastructure economics.
+          The more serious question is not whether the quarter was strong. It is whether anything in the underlying data weakens the durability case. On balance, it did not.
+        </p>
+      </div>
+
+      <div class="facts">
+        <div class="fact">
+          <small>Revenue scale</small>
+          <strong>$81.6B</strong>
+          <p>Up 20% sequentially from $68.1B and 85% year over year from $44.1B. NVIDIA is still adding enormous absolute dollars on top of an already massive base.</p>
+        </div>
+        <div class="fact">
+          <small>Data Center mix</small>
+          <strong>92.2%</strong>
+          <p>About 92.2% of total revenue came from Data Center, but the internal split matters: $37.9B Hyperscale and $37.4B ACIE.</p>
+        </div>
+        <div class="fact">
+          <small>Cash quality</small>
+          <strong>$48.6B</strong>
+          <p>Free cash flow of $48.554B confirms the earnings power is not just optical. Operating cash flow reached $50.344B.</p>
+        </div>
+        <div class="fact">
+          <small>Capital return</small>
+          <strong>$80B</strong>
+          <p>An additional $80.0B repurchase authorization plus a dividend increase from $0.01 to $0.25 signals confidence in long-duration cash generation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="drivers" class="reveal">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Drivers</div>
+          <h2>What actually drives the bullish case.</h2>
+        </div>
+        <p>
+          The thesis depends on more than headline revenue. The strongest evidence in the quarter was the combination of internal Data Center breadth,
+          networking acceleration, margin durability, and very high cash conversion.
+        </p>
+      </div>
+
+      <div class="committee-grid">
+        <div class="ledger">
+          <div class="ledger-row">
+            <div>
+              <strong>Data Center is still the engine, but it is not only a hyperscaler story anymore.</strong>
+              <span>Hyperscale was <em>$37.869B</em>. AI Clouds, Industrial & Enterprise was <em>$37.377B</em>. ACIE grew faster sequentially at 31%.</span>
+            </div>
+            <em>$75.246B total</em>
+          </div>
+          <div class="ledger-row">
+            <div>
+              <strong>Networking is becoming part of the moat, not a side business.</strong>
+              <span>Data Center networking reached <em>$14.8B</em>, up 199% year over year and 35% sequentially, supporting the full-stack cluster architecture thesis.</span>
+            </div>
+            <em>+199% Y/Y</em>
+          </div>
+          <div class="ledger-row">
+            <div>
+              <strong>Margins held at elite levels during Blackwell ramp.</strong>
+              <span>GAAP gross margin stayed at <em>74.9%</em>. Management said Blackwell remained the majority of revenue while margins were roughly flat sequentially.</span>
+            </div>
+            <em>~75%</em>
+          </div>
+          <div class="ledger-row">
+            <div>
+              <strong>Cash generation validates the accounting story.</strong>
+              <span>Operating cash flow was <em>$50.344B</em> and free cash flow was <em>$48.554B</em>. This is not just mark-to-market optics or narrative momentum.</span>
+            </div>
+            <em>$48.6B FCF</em>
+          </div>
+          <div class="ledger-row">
+            <div>
+              <strong>Expense growth still trails revenue growth by a wide margin.</strong>
+              <span>GAAP opex was <em>$7.621B</em>, up 52% Y/Y, but operating income still grew 147% Y/Y to <em>$53.536B</em>.</span>
+            </div>
+            <em>operating leverage</em>
+          </div>
+        </div>
+
+        <div class="panel deep-panel">
+          <h3>What impressed me most</h3>
+          <p>
+            The most important new information was not simply that NVIDIA beat expectations. It was that the company showed more internal breadth than the lazier version of the bull case assumes.
+            Data Center remains concentrated, but it is broadening within concentration: hyperscale remains enormous, while AI clouds, industrial, enterprise, and sovereign deployments are now large enough to matter as a second engine.
+          </p>
+          <p>
+            That matters because the stock becomes easier to defend when the company looks less like “a few giant buyers pulling forward GPU demand” and more like “the infrastructure standard through which multiple AI customer classes are scaling.”
+          </p>
+          <div class="split-2">
+            <div class="micro">
+              <small>Compute & Networking</small>
+              <strong>$74.6B</strong>
+              <p>This remains the dominant segment and captures the overwhelming bulk of the earnings engine.</p>
+            </div>
+            <div class="micro">
+              <small>Edge Computing</small>
+              <strong>$6.4B</strong>
+              <p>Still secondary today, but strategically important for NVIDIA’s longer-term AI-everywhere framing.</p>
+            </div>
+            <div class="micro">
+              <small>Accounts receivable</small>
+              <strong>$40.7B</strong>
+              <p>DSO improved to 45 days from 51 sequentially, which is a constructive quality signal.</p>
+            </div>
+            <div class="micro">
+              <small>Inventory</small>
+              <strong>$25.8B</strong>
+              <p>Higher inventory and $119.0B of supply commitments are bullish if demand persists, risky if the cycle cools hard.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="risk" class="reveal">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Risk</div>
+          <h2>The part that keeps this from being a lazy buy.</h2>
+        </div>
+        <p>
+          A serious recommendation has to explain what can go wrong. NVIDIA is operationally dominant, but this is still an expectation-heavy, policy-sensitive, concentrated business.
+        </p>
+      </div>
+
+      <div class="call-grid">
+        <div class="call-card">
+          <span class="label">Customer concentration</span>
+          <h3>A few customers still matter enormously.</h3>
+          <p>Three direct customers represented 21%, 17%, and 16% of Q1 revenue. That does not break the thesis, but it does make the stock vulnerable to behavior shifts by a small set of giant buyers.</p>
+        </div>
+        <div class="call-card">
+          <span class="label">China / export policy</span>
+          <h3>Resilience is proven. Immunity is not.</h3>
+          <p>No Data Center Hopper shipments to China occurred in the quarter, and Q2 guidance assumes no China Data Center compute revenue. China revenue still fell sharply year over year.</p>
+        </div>
+        <div class="call-card">
+          <span class="label">Capital commitments</span>
+          <h3>The buildout is getting more infrastructural.</h3>
+          <p>NVIDIA is locking in inventory, supply, cloud commitments, and future lease obligations. That is powerful if demand stays hot; it can cut the other way if demand cools faster than expected.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="call" class="reveal">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Call</div>
+          <h2>Buy the franchise, not the fantasy.</h2>
+        </div>
+        <p>
+          My recommendation is <strong>Buy / Outperform</strong>. The quarter gives enough evidence to support a bullish operating view,
+          but the right tone is disciplined conviction, not hype.
+        </p>
+      </div>
+
+      <div class="call-grid">
+        <div class="call-card">
+          <span class="label">Why buy</span>
+          <h3>The operating business is still best-in-class.</h3>
+          <p>Extreme revenue growth, broadening Data Center mix, networking leverage, ~75% gross margin, and $48.6B of free cash flow together justify a premium strategic multiple.</p>
+        </div>
+        <div class="call-card">
+          <span class="label">Why not euphoric</span>
+          <h3>The stock is priced for continued dominance.</h3>
+          <p>The business can remain outstanding while the share price still gets hit by valuation compression, whisper misses, or policy noise. This is a premium franchise, not an easy trade.</p>
+        </div>
+        <div class="call-card">
+          <span class="label">Best committee phrasing</span>
+          <h3>High-quality AI infrastructure exposure.</h3>
+          <p>NVIDIA remains the highest-quality public-market vehicle for AI infrastructure exposure, but it should be owned with full awareness that the stock is vulnerable to expectation misses even when the quarter is excellent.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="sources" class="reveal">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Sources</div>
+          <h2>Primary materials, not recycled commentary.</h2>
+        </div>
+        <p>
+          The page is built from NVIDIA’s own quarterly reporting package and SEC-hosted mirrors. The live investor page was verified in-browser, then the SEC-hosted materials were used for extraction and confirmation.
+        </p>
+      </div>
+
+      <div class="source-list">
+        <div class="source">
+          <div>
+            <strong>NVIDIA Quarterly Results</strong>
+            <span>Live investor page verified in browser. It exposed the Q1 FY2027 press release, CFO commentary, 10-Q, revenue trend PDF, and presentation.</span>
+          </div>
+          <a href="https://investor.nvidia.com/financial-info/quarterly-results/default.aspx">Open source</a>
+        </div>
+        <div class="source">
+          <div>
+            <strong>SEC mirror — earnings press release</strong>
+            <span>Used for revenue, EPS, margin, guidance, capital return, and quarterly highlights.</span>
+          </div>
+          <a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000051/q1fy27pr.htm">Open source</a>
+        </div>
+        <div class="source">
+          <div>
+            <strong>SEC mirror — CFO commentary</strong>
+            <span>Used for market-platform split, Data Center sub-market detail, networking, free cash flow, DSO, inventory, commitments, and guidance language.</span>
+          </div>
+          <a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000051/q1fy27cfocommentary.htm">Open source</a>
+        </div>
+        <div class="source">
+          <div>
+            <strong>SEC filing — 10-Q</strong>
+            <span>Used for customer concentration, geographic revenue, lease commitments, inventory composition, and risk language around China and Rubin ramp complexity.</span>
+          </div>
+          <a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/nvda-20260426.htm">Open source</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer reveal">
+    <div>
+      <h3>Full analytical write-up.</h3>
+      <p>
+        The companion notes include the full decomposition, figure bank, risk framing, and recommendation language suitable for a more detailed discussion.
+      </p>
+    </div>
+    <a class="btn btn-primary" href="notes.md">Read notes.md</a>
+  </footer>
+
+  <script>
+    const progressBar = document.getElementById('progressBar');
+    const updateProgress = () => {
+      const scrollTop = window.scrollY;
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.width = (total > 0 ? (scrollTop / total) * 100 : 0) + '%';
+    };
+    updateProgress();
+    window.addEventListener('scroll', updateProgress, { passive: true });
+
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      }
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

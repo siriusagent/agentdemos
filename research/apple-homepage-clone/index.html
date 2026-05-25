@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apple — Clone</title>
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --blue: #06c;
+      --card: #ffffff;
+      --dark: #000000;
+      --light: #fbfbfd;
+      --border: rgba(0, 0, 0, 0.08);
+      --nav: rgba(22, 22, 23, 0.82);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .topnav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      height: 44px;
+      background: var(--nav);
+      backdrop-filter: saturate(180%) blur(20px);
+      color: rgba(255,255,255,0.92);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .topnav-inner {
+      max-width: 1024px;
+      margin: 0 auto;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 0 18px;
+      font-size: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .nav-links a,
+    .nav-icon {
+      opacity: 0.88;
+      transition: opacity 140ms ease, transform 140ms ease;
+    }
+
+    .nav-links a:hover,
+    .nav-icon:hover {
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+
+    .promo-bar {
+      background: #ffffff;
+      text-align: center;
+      padding: 14px 16px;
+      font-size: 14px;
+      color: #1d1d1f;
+    }
+
+    .promo-bar a {
+      color: var(--blue);
+    }
+
+    .hero-stack {
+      display: grid;
+      gap: 12px;
+      padding: 12px;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 690px;
+      border-radius: 28px;
+      overflow: hidden;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      isolation: isolate;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.04), rgba(0,0,0,0.28));
+      z-index: 0;
+    }
+
+    .hero.light::after {
+      background: linear-gradient(to bottom, rgba(255,255,255,0.06), rgba(255,255,255,0.18));
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 72px 24px 52px;
+    }
+
+    .hero.dark { color: #f5f5f7; background-color: #000; }
+    .hero.light { color: #1d1d1f; background-color: #fbfbfd; }
+
+    .eyebrow {
+      font-size: 18px;
+      margin-bottom: 8px;
+      opacity: 0.92;
+      transform: translateY(20px);
+      animation: rise 800ms ease forwards;
+    }
+
+    .headline {
+      font-size: clamp(42px, 6vw, 56px);
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      font-weight: 600;
+      margin: 0;
+      transform: translateY(20px);
+      animation: rise 850ms ease forwards;
+    }
+
+    .subhead {
+      margin-top: 10px;
+      font-size: clamp(21px, 2.8vw, 28px);
+      line-height: 1.18;
+      letter-spacing: 0.004em;
+      font-weight: 400;
+      max-width: 700px;
+      transform: translateY(20px);
+      animation: rise 900ms ease forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 22px;
+      transform: translateY(20px);
+      animation: rise 950ms ease forwards;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 132px;
+      height: 44px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-size: 17px;
+      font-weight: 400;
+      transition: transform 180ms ease, opacity 180ms ease, background 180ms ease;
+    }
+
+    .button:hover {
+      transform: scale(1.03);
+    }
+
+    .button.primary {
+      background: #0071e3;
+      color: white;
+    }
+
+    .button.secondary {
+      border: 1px solid #2997ff;
+      color: #2997ff;
+      background: transparent;
+    }
+
+    .hero.dark .button.secondary {
+      border-color: #2997ff;
+      color: #2997ff;
+    }
+
+    .hero.light .button.secondary {
+      color: #06c;
+      border-color: #06c;
+    }
+
+    .hero-footnote {
+      margin-top: auto;
+      font-size: 19px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      background: linear-gradient(90deg, #2ca4ff, #7c6cff, #ff5f6d);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      opacity: 0.95;
+    }
+
+    .promo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      padding: 0 12px 12px;
+    }
+
+    .promo {
+      position: relative;
+      min-height: 580px;
+      border-radius: 28px;
+      overflow: hidden;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      color: #1d1d1f;
+      transform: translateY(0);
+      transition: transform 220ms ease, box-shadow 220ms ease;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.03) inset;
+    }
+
+    .promo:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 36px rgba(0,0,0,0.12);
+    }
+
+    .promo.dark {
+      color: #f5f5f7;
+    }
+
+    .promo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.02), rgba(0,0,0,0.12));
+    }
+
+    .promo.dark::after {
+      background: linear-gradient(to bottom, rgba(0,0,0,0.04), rgba(0,0,0,0.3));
+    }
+
+    .promo-content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 48px 26px;
+    }
+
+    .promo h3 {
+      margin: 0;
+      font-size: clamp(32px, 4vw, 40px);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    .promo p {
+      margin: 10px 0 0;
+      font-size: 21px;
+      line-height: 1.2;
+      max-width: 420px;
+    }
+
+    .promo .hero-actions {
+      margin-top: 18px;
+    }
+
+    .ribbon {
+      margin-top: auto;
+      font-size: 15px;
+      color: #86868b;
+      max-width: 500px;
+      line-height: 1.35;
+    }
+
+    .carousel {
+      padding: 0 12px 18px;
+      overflow: hidden;
+    }
+
+    .carousel-track {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(290px, 420px);
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scroll-snap-type: x proximity;
+    }
+
+    .carousel-card {
+      position: relative;
+      min-height: 236px;
+      border-radius: 24px;
+      overflow: hidden;
+      background: #000;
+      color: white;
+      scroll-snap-align: start;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .carousel-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.68), rgba(0,0,0,0.12));
+    }
+
+    .carousel-copy {
+      position: absolute;
+      z-index: 1;
+      left: 22px;
+      right: 22px;
+      bottom: 20px;
+    }
+
+    .carousel-kicker {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.82;
+      margin-bottom: 8px;
+    }
+
+    .carousel-title {
+      font-size: 24px;
+      line-height: 1.15;
+      font-weight: 600;
+    }
+
+    .footer {
+      padding: 26px 18px 56px;
+      color: #6e6e73;
+      font-size: 12px;
+      line-height: 1.5;
+      max-width: 1024px;
+      margin: 0 auto;
+    }
+
+    .footer hr {
+      border: 0;
+      border-top: 1px solid #d2d2d7;
+      margin: 18px 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .footer h4 {
+      margin: 0 0 10px;
+      color: #1d1d1f;
+      font-size: 12px;
+    }
+
+    .footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer li {
+      margin: 0 0 8px;
+    }
+
+    .footer a {
+      color: #424245;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes rise {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .promo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .topnav-inner {
+        justify-content: space-between;
+      }
+
+      .nav-links {
+        gap: 14px;
+        font-size: 11px;
+      }
+
+      .hero,
+      .promo {
+        min-height: 560px;
+        border-radius: 22px;
+      }
+
+      .hero-content,
+      .promo-content {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .carousel-track {
+        grid-auto-columns: 86vw;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .nav-links a:nth-child(n+6) {
+        display: none;
+      }
+
+      .promo-bar {
+        font-size: 13px;
+      }
+
+      .hero-stack,
+      .promo-grid,
+      .carousel {
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+
+      .hero,
+      .promo {
+        min-height: 500px;
+        border-radius: 18px;
+      }
+
+      .button {
+        min-width: 118px;
+        height: 40px;
+        font-size: 15px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topnav">
+    <div class="topnav-inner">
+      <div class="nav-icon"></div>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#">Store</a>
+        <a href="#">Mac</a>
+        <a href="#">iPad</a>
+        <a href="#">iPhone</a>
+        <a href="#">Watch</a>
+        <a href="#">Vision</a>
+        <a href="#">AirPods</a>
+        <a href="#">TV &amp; Home</a>
+        <a href="#">Entertainment</a>
+        <a href="#">Accessories</a>
+        <a href="#">Support</a>
+      </nav>
+      <div class="nav-icon">⌕</div>
+    </div>
+  </header>
+
+  <div class="promo-bar">
+    Buy Mac or iPad for college with education savings. Choose AirPods or an eligible accessory. <a href="#">Shop</a>
+  </div>
+
+  <main>
+    <section class="hero-stack">
+      <article class="hero dark" style="background-image:url('https://www.apple.com/v/home/cm/images/heroes/iphone-17-pro/hero_iphone_17_pro__bknyzxfk2agi_large.jpg');">
+        <div class="hero-content">
+          <div class="eyebrow">Apple Intelligence</div>
+          <h1 class="headline">iPhone 17 Pro</h1>
+          <div class="subhead">All out Pro.</div>
+          <div class="hero-actions">
+            <a class="button primary" href="#">Learn more</a>
+            <a class="button secondary" href="#">Buy</a>
+          </div>
+          <div class="hero-footnote">Built for Apple Intelligence.</div>
+        </div>
+      </article>
+
+      <article class="hero light" style="background-image:url('https://www.apple.com/v/home/cm/images/heroes/iphone-17/hero_iphone_17__c5vvimu9a20y_large.jpg');">
+        <div class="hero-content">
+          <h1 class="headline">iPhone 17</h1>
+          <div class="subhead">Magichromatic.</div>
+          <div class="hero-actions">
+            <a class="button primary" href="#">Learn more</a>
+            <a class="button secondary" href="#">Buy</a>
+          </div>
+          <div class="hero-footnote">Built for Apple Intelligence.</div>
+        </div>
+      </article>
+
+      <article class="hero light" style="background-image:url('https://www.apple.com/v/home/cm/images/heroes/macbook-air-m5/hero_macbook_air_m5__w2bjb22ky7my_large.jpg'); background-position:center bottom;">
+        <div class="hero-content">
+          <h1 class="headline">MacBook Air</h1>
+          <div class="subhead">Now supercharged by M5.</div>
+          <div class="hero-actions">
+            <a class="button primary" href="#">Learn more</a>
+            <a class="button secondary" href="#">Buy</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="promo-grid">
+      <article class="promo reveal" style="background-image:url('https://www.apple.com/v/home/cn/images/promos/wwdc26-announce/promo_wwdc26_announce_b__b58bcmqvfwia_large.jpg'); background-position:center;">
+        <div class="promo-content">
+          <h3>WWDC26</h3>
+          <p>Introducing the next chapter across Apple platforms.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#">Learn more</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="promo dark reveal" style="background-image:url('https://www.apple.com/v/home/cm/images/promos/ipad-air-m4/promo_ipad_air_m4__f9ie3h3pzr6m_large.jpg');">
+        <div class="promo-content">
+          <h3>iPad Air</h3>
+          <p>Now with the superfast M4 chip.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#">Learn more</a>
+            <a class="button secondary" href="#">Buy</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="promo reveal" style="background-image:url('https://www.apple.com/v/home/cn/images/promos/apple-card-airpods/promo_apple_card_airpods__cq0gu2a9hxkm_large.jpg');">
+        <div class="promo-content">
+          <h3>Apple Card</h3>
+          <p>Get up to 3% Daily Cash back on Apple purchases.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#">Learn more</a>
+            <a class="button secondary" href="#">Apply now</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="promo reveal" style="background-image:url('https://www.apple.com/v/home/cm/images/promos/iphone-tradein/promo_iphone_tradein__bugw15ka691e_large.jpg');">
+        <div class="promo-content">
+          <h3>Trade In</h3>
+          <p>Get credit toward a new iPhone when you trade in an eligible device.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#">Get your estimate</a>
+          </div>
+          <div class="ribbon">Monthly pricing shown here is for style only in this static clone.</div>
+        </div>
+      </article>
+
+      <article class="promo dark reveal" style="background-image:url('https://www.apple.com/v/home/cm/images/promos/carriers/promo_carrier__e0izvxwqosgi_large.jpg');">
+        <div class="promo-content">
+          <h3>Carrier deals</h3>
+          <p>Get up to $1000 in credit on a new iPhone.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#">Find your deal</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="promo dark reveal" style="background-image:url('https://www.apple.com/v/home/cn/images/promos/college-students-2026/promo_college_students__bxqdcoxgjzw2_large.jpg');">
+        <div class="promo-content">
+          <h3>College students</h3>
+          <p>Save on Mac and iPad, then choose AirPods or an eligible accessory.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#">Shop</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="carousel">
+      <div class="carousel-track">
+        <article class="carousel-card" style="background-image:url('https://is1-ssl.mzstatic.com/image/thumb/Features/v4/5d/6b/8a/5d6b8a24-1ba8-6a08-8596-47d0cadacd5d/fc3f421a-0ae3-48fa-9cfc-bf3c4f6240e2.png/1250x668sr.jpg');">
+          <div class="carousel-copy">
+            <div class="carousel-kicker">Apple TV+</div>
+            <div class="carousel-title">F1 on Apple TV. Every Grand Prix™, live and on demand.</div>
+          </div>
+        </article>
+        <article class="carousel-card" style="background-image:url('https://is1-ssl.mzstatic.com/image/thumb/zFsLjGWiewkBj8SFd-VBnw/1250x668sr.jpg');">
+          <div class="carousel-copy">
+            <div class="carousel-kicker">Apple Original</div>
+            <div class="carousel-title">A thriller where everyone shared everything but the truth.</div>
+          </div>
+        </article>
+        <article class="carousel-card" style="background-image:url('https://is1-ssl.mzstatic.com/image/thumb/Features221/v4/f0/ac/1e/f0ac1e58-0027-49d0-378e-68470edfb0ec/3b7d6fac-0061-401c-9716-742245053fd0.png/220x54.png'); background-size:cover; background-position:center;">
+          <div class="carousel-copy">
+            <div class="carousel-kicker">Apple Music</div>
+            <div class="carousel-title">Listen now. New music, interviews, and playlists all in one place.</div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>This is a static local reproduction inspired by the current apple.com homepage for visual testing. It is not affiliated with Apple and does not implement commerce, login, or live product flows.</p>
+    <hr />
+    <div class="footer-grid">
+      <div>
+        <h4>Shop and Learn</h4>
+        <ul>
+          <li><a href="#">Store</a></li>
+          <li><a href="#">Mac</a></li>
+          <li><a href="#">iPad</a></li>
+          <li><a href="#">iPhone</a></li>
+          <li><a href="#">Watch</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Apple Music</a></li>
+          <li><a href="#">Apple TV+</a></li>
+          <li><a href="#">Apple Arcade</a></li>
+          <li><a href="#">iCloud</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Apple Store</h4>
+        <ul>
+          <li><a href="#">Find a Store</a></li>
+          <li><a href="#">Genius Bar</a></li>
+          <li><a href="#">Today at Apple</a></li>
+          <li><a href="#">Financing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For Business</h4>
+        <ul>
+          <li><a href="#">Apple and Business</a></li>
+          <li><a href="#">Shop for Business</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About Apple</h4>
+        <ul>
+          <li><a href="#">Newsroom</a></li>
+          <li><a href="#">Apple Leadership</a></li>
+          <li><a href="#">Career Opportunities</a></li>
+          <li><a href="#">Investors</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      }
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>

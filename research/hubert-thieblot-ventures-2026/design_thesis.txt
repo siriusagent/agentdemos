@@ -1,0 +1,5 @@
+Visual thesis: A dark, founder-lore editorial profile with gaming-internet DNA—midnight surfaces, electric amber accents, and restrained motion that makes Hubert Thieblot read less like a generic VC profile and more like a battle-tested operator who graduated into capital.
+
+Content plan: Hero with identity and thesis; support section on why he matters; detail sections on Curse, Twitch transition, and Founders Inc/investing posture; final section with sourced takeaways and references.
+
+Interaction thesis: 1) Hero text and signal lines ease upward with staggered reveal. 2) Timeline spine animates as sections enter view. 3) Venture rows use subtle hover translation/glow to sharpen scanability without turning into a card grid.

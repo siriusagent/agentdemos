@@ -1,0 +1,3 @@
+Visual thesis: Institutional earnings desk — dark, high-contrast editorial finance page with restrained neon signal accents and terminal-grade precision.
+Content plan: full-bleed hero with headline verdict; key metrics and segment mix; recommendations and valuation framing; source-backed notes and final CTA.
+Interaction thesis: staggered hero reveal; scroll-linked progress line across sections; subtle hover illumination on metric rows and recommendation blocks.

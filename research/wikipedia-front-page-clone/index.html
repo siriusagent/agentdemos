@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wikipedia, the free encyclopedia — Clone</title>
+  <style>
+    :root {
+      --border: #a2a9b1;
+      --border-soft: #c8ccd1;
+      --text: #202122;
+      --muted: #54595d;
+      --link: #0645ad;
+      --link-visited: #0b0080;
+      --bg: #ffffff;
+      --top-bg: #f8f9fa;
+      --welcome-bg: #fffaf5;
+      --welcome-border: #f2e0ce;
+      --left-bg: #f5fffa;
+      --left-head: #cef2e0;
+      --left-head-border: #a3bfb1;
+      --right-bg: #f5faff;
+      --right-head: #cedff2;
+      --right-head-border: #a3b0bf;
+      --lower-bg: #faf5ff;
+      --lower-head: #ddcef2;
+      --lower-head-border: #afa3bf;
+      --bottom-head: #eaecf0;
+      --bottom-border: #ddd;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+      transition: color 120ms ease, text-decoration-color 120ms ease;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    a:visited {
+      color: var(--link-visited);
+    }
+
+    .page {
+      width: min(100%, 1000px);
+      margin: 0 auto;
+      padding: 8px;
+    }
+
+    .mp-box {
+      border: 1px solid var(--border);
+      padding: 0 0.5em 0.5em;
+      margin-top: 4px;
+      transition: box-shadow 140ms ease;
+    }
+
+    .mp-box:hover {
+      box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    }
+
+    .mp-topbanner {
+      background: var(--top-bg);
+      border-color: #ddd;
+      text-align: center;
+      padding-top: 0.55em;
+    }
+
+    .welcome-panel {
+      background: var(--welcome-bg);
+      border: 1px solid var(--welcome-border);
+      padding: 0.55em 0.8em 0.75em;
+    }
+
+    .welcome-title {
+      font-size: 2.3em;
+      line-height: 1.05;
+      margin: 0 0 0.12em;
+      font-weight: 400;
+    }
+
+    .welcome-subtitle {
+      font-size: 0.97em;
+      margin-bottom: 0.35em;
+    }
+
+    .article-count {
+      font-size: 0.88em;
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      gap: 0.7em;
+      flex-wrap: wrap;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .article-count li::after {
+      content: "·";
+      font-weight: 700;
+      margin-left: 0.7em;
+    }
+
+    .article-count li:last-child::after {
+      content: "";
+      margin: 0;
+    }
+
+    .upper {
+      display: flex;
+      gap: 4px;
+      align-items: stretch;
+    }
+
+    .left-col,
+    .right-col {
+      min-width: 0;
+    }
+
+    .left-col {
+      flex: 1 1 55%;
+      background: var(--left-bg);
+      border-color: #cef2e0;
+    }
+
+    .right-col {
+      flex: 1 1 45%;
+      background: var(--right-bg);
+      border-color: #cedff2;
+    }
+
+    .lower {
+      background: var(--lower-bg);
+      border-color: #ddcef2;
+    }
+
+    .bottom {
+      border-color: #e2e2e2;
+    }
+
+    .mp-h2 {
+      border: 1px solid var(--border);
+      margin: 0.5em 0;
+      padding: 0.2em 0.4em;
+      font-size: 1.2em;
+      font-weight: 700;
+      font-family: Georgia, "Times New Roman", Times, serif;
+    }
+
+    .left-col .mp-h2 {
+      background: var(--left-head);
+      border-color: var(--left-head-border);
+    }
+
+    .right-col .mp-h2 {
+      background: var(--right-head);
+      border-color: var(--right-head-border);
+    }
+
+    .lower .mp-h2 {
+      background: var(--lower-head);
+      border-color: var(--lower-head-border);
+    }
+
+    .bottom .mp-h2 {
+      background: var(--bottom-head);
+      border-color: var(--bottom-border);
+    }
+
+    .float-media {
+      float: left;
+      margin: 0.5em 0.9em 0.45em 0;
+      width: 171px;
+    }
+
+    .float-media.right {
+      float: right;
+      margin: 0.5em 0 0.45em 0.9em;
+      width: 180px;
+    }
+
+    .thumb {
+      margin: 0;
+    }
+
+    .thumb img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--border-soft);
+      background: #fff;
+    }
+
+    .thumb figcaption {
+      padding-top: 0.25em;
+      font-size: 0.92em;
+      word-break: break-word;
+    }
+
+    .clearfix::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+
+    p {
+      margin: 0 0 0.7em;
+    }
+
+    ul {
+      margin: 0.35em 0 0.65em 1.35em;
+      padding: 0;
+    }
+
+    li {
+      margin: 0.2em 0;
+    }
+
+    .small-links,
+    .recently-featured {
+      text-align: right;
+      font-size: 0.93em;
+    }
+
+    .inline-list {
+      display: inline;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .inline-list li {
+      display: inline;
+      margin: 0;
+    }
+
+    .inline-list li::after {
+      content: " · ";
+      font-weight: 700;
+    }
+
+    .inline-list li:last-child::after {
+      content: "";
+    }
+
+    .ongoing,
+    .recent-deaths {
+      margin-top: 0.35em;
+    }
+
+    .date-heading {
+      font-weight: 700;
+    }
+
+    .featured-picture {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 0.9em;
+      align-items: start;
+    }
+
+    .featured-picture .thumb img {
+      border-width: 0;
+    }
+
+    .featured-picture .credit {
+      margin-top: 0.5em;
+    }
+
+    .other-areas ul {
+      list-style: none;
+      margin-left: 0;
+    }
+
+    .other-areas li {
+      margin: 0.34em 0;
+    }
+
+    .sister-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.65em 1.15em;
+      margin-top: 0.7em;
+    }
+
+    .sister-item {
+      display: flex;
+      gap: 0.7em;
+      align-items: flex-start;
+    }
+
+    .sister-item img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      flex: 0 0 auto;
+    }
+
+    .sister-item strong {
+      display: block;
+      font-weight: 400;
+    }
+
+    .languages-intro {
+      text-align: center;
+      margin-bottom: 0.6em;
+    }
+
+    .language-group {
+      margin: 0.85em 0 0.6em;
+    }
+
+    .language-count-row {
+      width: 90%;
+      margin: 0 auto 0.35em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1em;
+    }
+
+    .bar {
+      flex: 1 1 auto;
+      height: 1px;
+      background: var(--border-soft);
+    }
+
+    .language-count {
+      white-space: nowrap;
+      font-weight: 700;
+    }
+
+    .language-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.25em 0.8em;
+      margin: 0;
+      padding: 0;
+    }
+
+    .language-links li {
+      margin: 0;
+      white-space: nowrap;
+    }
+
+    .site-footer {
+      color: var(--muted);
+      font-size: 0.86em;
+      margin: 1em 0 0.4em;
+      text-align: center;
+    }
+
+    .backtotop {
+      position: fixed;
+      right: 14px;
+      bottom: 14px;
+      border: 1px solid var(--border-soft);
+      background: rgba(255,255,255,0.95);
+      color: var(--text);
+      padding: 0.45em 0.6em;
+      font-size: 12px;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 160ms ease, transform 160ms ease;
+    }
+
+    .backtotop.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 875px) {
+      .upper {
+        display: block;
+      }
+
+      .featured-picture {
+        grid-template-columns: 1fr;
+      }
+
+      .sister-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .article-count {
+        display: block;
+      }
+
+      .article-count li::after {
+        content: "";
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .page {
+        padding: 6px;
+      }
+
+      .welcome-title {
+        font-size: 1.9em;
+      }
+
+      .float-media,
+      .float-media.right {
+        float: none;
+        width: min(100%, 260px);
+        margin: 0.4em auto 0.8em;
+      }
+
+      .featured-picture .thumb {
+        max-width: 320px;
+      }
+
+      .sister-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .language-count-row {
+        width: 100%;
+        gap: 0.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page" id="top">
+    <section class="mp-box mp-topbanner">
+      <div class="welcome-panel">
+        <div class="welcome-title">Welcome to <a href="#">Wikipedia</a>,</div>
+        <div class="welcome-subtitle">the <a href="#">free</a> <a href="#">encyclopedia</a> that <a href="#">anyone can edit</a>.</div>
+        <ul class="article-count">
+          <li><a href="#">277,683</a> active editors</li>
+          <li><a href="#">7,186,275</a> articles in <a href="#">English</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="upper">
+      <div class="mp-box left-col">
+        <h2 class="mp-h2">From today's featured article</h2>
+        <div class="clearfix">
+          <figure class="thumb float-media">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Capital_Indoor_Stadium_%2820221112161613%29.jpg/250px-Capital_Indoor_Stadium_%2820221112161613%29.jpg" alt="Capital Indoor Stadium" />
+            <figcaption>Capital Indoor Stadium</figcaption>
+          </figure>
+          <p>The <b><a href="#">figure skating team event at the 2022 Winter Olympics</a></b> was held between 4 and 7 February at the <a href="#">Capital Indoor Stadium</a> <i>(pictured)</i> in <a href="#">Beijing</a>, China. It consisted of competitions in <a href="#">men's singles, women's singles</a>, <a href="#">pair skating</a>, and <a href="#">ice dance</a>. Skaters and teams earned points based on their placements in each event; medalists were determined based on their total points. The team representing the <a href="#">Russian Olympic Committee</a> originally finished in first place, while the team from the United States finished second, and the Japanese team third. The medal ceremony was postponed when a <a href="#">positive test confirming the presence of a banned substance</a> was received for <a href="#">Kamila Valieva</a> of Russia. After nearly two years of litigation, Valieva's scores were stricken and the newly tabulated results placed the American team first, the Japanese team second, and the Russian team third. The American and Japanese teams received their medals at a ceremony held at the <a href="#">Jardins du Trocadéro</a> in <a href="#">Paris</a> during the <a href="#">2024 Summer Olympics</a>. <i>(<b><a href="#">Full article...</a></b>)</i></p>
+        </div>
+        <div class="recently-featured">Recently featured:
+          <ul class="inline-list">
+            <li><a href="#">"Running Out of Time" (song)</a></li>
+            <li><a href="#"><i>Intraproboscis</i></a></li>
+            <li><a href="#">2006 Football League Championship play-off final</a></li>
+          </ul>
+        </div>
+        <div class="small-links">
+          <ul class="inline-list">
+            <li><b><a href="#">Archive</a></b></li>
+            <li><b><a href="#">By email</a></b></li>
+            <li><b><a href="#">More featured articles</a></b></li>
+            <li><b><a href="#">About</a></b></li>
+          </ul>
+        </div>
+
+        <h2 class="mp-h2">Did you know ...</h2>
+        <div class="clearfix">
+          <figure class="thumb float-media right">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/0_Botassart_-_Tombeau_du_G%C3%A9ant_%281%29.jpg/250px-0_Botassart_-_Tombeau_du_G%C3%A9ant_%281%29.jpg" alt="Semois Valley National Park" />
+            <figcaption>Semois Valley National Park</figcaption>
+          </figure>
+          <ul>
+            <li>... that the <b><a href="#">Semois Valley National Park</a></b> <i>(pictured)</i> and the <b><a href="#">National Park Entre-Sambre-et-Meuse</a></b> together form part of one of the largest forested areas of Western Europe?</li>
+            <li>... that <b><a href="#">Eorcengota</a></b> had a vision predicting her own death in which she was symbolically represented as a gold coin?</li>
+            <li>... that quarterback <b><a href="#">Bart Houston</a></b> was named after quarterback <a href="#">Bart Starr</a>?</li>
+            <li>... that <b><a href="#">HMS <i>Solebay</i></a></b> and HMS <i>Derwent</i> were the first ships assigned to suppress the <a href="#">Atlantic slave trade</a>?</li>
+            <li>... that the Chinese dinosaur <i><b><a href="#">Chilantaisaurus</a></b></i> is only known from a few giant bones including a huge hand claw?</li>
+            <li>... that <b><a href="#">a statue at a baseball stadium</a></b> has been criticized for connections to racial segregation?</li>
+            <li>... that Cambridge won all but one of the eight events at <b><a href="#">the 2026 Boat Race</a></b>, the exception being the Oxford women's team, who broke their streak of eight consecutive losses?</li>
+            <li>... that a critic scored <i><a href="#">Angine de Poitrine</a></i>'s album <i>Vol. II</i> a perfect 10 despite calling it "pretentious and performative"?</li>
+            <li>... that Nicholas McKay formed the <b><a href="#">Helmac Products Corporation</a></b> in 1956 to manufacture and sell his invention: the lint roller?</li>
+          </ul>
+        </div>
+        <div class="small-links">
+          <ul class="inline-list">
+            <li><b><a href="#">Archive</a></b></li>
+            <li><b><a href="#">Start a new article</a></b></li>
+            <li><b><a href="#">Nominate an article</a></b></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mp-box right-col">
+        <h2 class="mp-h2">In the news</h2>
+        <div class="clearfix">
+          <figure class="thumb float-media right">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Francisco_Carvalho.jpg/250px-Francisco_Carvalho.jpg" alt="Francisco Carvalho" />
+            <figcaption>Francisco Carvalho</figcaption>
+          </figure>
+          <ul>
+            <li>In <a href="#">golf</a>, <b><a href="#">Aaron Rai</a></b> wins <a href="#">the PGA Championship</a>.</li>
+            <li>The <a href="#">African Party for the Independence of Cape Verde</a>, led by <b><a href="#">Francisco Carvalho</a></b> <i>(pictured)</i>, wins the most seats in <a href="#">the parliamentary election</a>.</li>
+            <li><a href="#">Bulgaria</a>, represented by <b><a href="#">Dara</a></b> with the song "<a href="#">Bangaranga</a>", wins <a href="#">the Eurovision Song Contest</a>.</li>
+            <li>The <a href="#">World Health Organization</a> declares <a href="#">the Ebola epidemic</a> in the Democratic Republic of the Congo and Uganda a <a href="#">public health emergency of international concern</a>.</li>
+            <li><a href="#">Protests erupt in Bolivia</a> against the government of <a href="#">Rodrigo Paz</a>, causing clashes between the protesters and the police.</li>
+          </ul>
+          <div class="ongoing"><b>Ongoing</b>: <a href="#">Iran war</a> (<a href="#">Lebanon war</a>) · <a href="#">Russo-Ukrainian war timeline</a> · <a href="#">Sudanese civil war timeline</a></div>
+          <div class="recent-deaths"><b>Recent deaths</b>: <a href="#">Peter Hollingworth</a> · <a href="#">Kyle Busch</a> · <a href="#">Félicien Kabuga</a> · <a href="#">Valie Export</a> · <a href="#">Barney Frank</a> · <a href="#">Scott Hastings</a></div>
+        </div>
+        <div class="small-links"><b><a href="#">More current events</a></b> · <b><a href="#">Nominate an article</a></b></div>
+
+        <h2 class="mp-h2">On this day</h2>
+        <div class="clearfix">
+          <figure class="thumb float-media right">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Chateau_Montelena_Chardonnay_1973.jpg/220px-Chateau_Montelena_Chardonnay_1973.jpg" alt="Bottle of 1973 Chateau Montelena Chardonnay" />
+            <figcaption>Bottle of 1973 Chateau Montelena Chardonnay</figcaption>
+          </figure>
+          <p class="date-heading"><a href="#">May 24</a>: <a href="#">Aldersgate Day</a> (<a href="#">Methodism</a>)</p>
+          <ul>
+            <li><b>1667</b> – Led by <a href="#">King Louis XIV</a>, the French army invaded the <a href="#">Spanish Netherlands</a>, beginning the <a href="#">War of Devolution</a>.</li>
+            <li><b>1830</b> – The <a href="#">nursery rhyme</a> "<a href="#">Mary Had a Little Lamb</a>" was first published as a poem by <a href="#">Sarah Josepha Hale</a>.</li>
+            <li><b>1976</b> – In a <a href="#">wine competition</a> in Paris <i>(wine bottle pictured)</i>, French judges <a href="#">shocked the wine industry</a> by rating <a href="#">California wines</a> higher than French ones.</li>
+            <li><b>1986</b> – A <a href="#">stationary front</a> began over the central Caribbean Sea, <a href="#">leading to severe floods</a> that over two weeks killed dozens of people in Cuba, the Dominican Republic, Haiti and Jamaica.</li>
+            <li><b>2022</b> – An 18-year old gunman shot and killed nineteen students and two teachers in a <a href="#">mass shooting</a> at Robb Elementary School in <a href="#">Uvalde, Texas</a>.</li>
+          </ul>
+          <p><a href="#">Elizabeth Carey, Lady Berkeley</a> (b. 1576) · <a href="#">Marek Sobieski</a> (b. 1628) · <a href="#">Carmine Infantino</a> (b. 1925) · <a href="#">Beverly White</a> (d. 2021)</p>
+        </div>
+        <div class="small-links"><b><a href="#">More anniversaries</a></b>: <a href="#">May 23</a> · <a href="#">May 24</a> · <a href="#">May 25</a></div>
+      </div>
+    </section>
+
+    <section class="mp-box lower">
+      <h2 class="mp-h2">Today's featured picture</h2>
+      <div class="featured-picture">
+        <figure class="thumb">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Nephila_pilipes_male_and_female.jpg/330px-Nephila_pilipes_male_and_female.jpg" alt="Nephila pilipes" />
+        </figure>
+        <div>
+          <p><i><b><a href="#">Nephila pilipes</a></b></i> is a species of <a href="#">golden orb-web spider</a> found across Asia and parts of Oceania. It is commonly found in humid forests and coastal areas, near surface water and against buildings. The species shows extreme <a href="#">sexual dimorphism</a>, with females among the world's largest orb-weaving spiders, reaching 50 mm (2 in) in body length, while males are typically only 5–6.5 mm (0.2–0.25 in).</p>
+          <p><i>Nephila pilipes</i> preys mainly on flying insects and can alter web structure depending on prey type. Its asymmetrical golden webs are made from exceptionally strong silk that has been studied in <a href="#">materials science</a>. The spider rarely bites humans, and its bites are generally mild. In parts of Vietnam, it is also eaten as a traditional food source. This photograph shows an <i>N. pilipes</i> female and male (on the female's abdomen) on the <a href="#">Wu Kau Tang</a>, Hong Kong.</p>
+          <p class="credit">Photograph credit: <a href="#">Charles J. Sharp</a></p>
+          <div class="small-links">Recently featured: <a href="#">Albert Marco</a> · <a href="#">Valerian</a> · <a href="#">Greenfield tornado</a> · <b><a href="#">Archive</a></b> · <b><a href="#">More featured pictures</a></b></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mp-box bottom other-areas">
+      <h2 class="mp-h2">Other areas of Wikipedia</h2>
+      <ul>
+        <li><b><a href="#">Community portal</a></b> – The central hub for editors, with resources, links, tasks, and announcements.</li>
+        <li><b><a href="#">Village pump</a></b> – Forum for discussions about Wikipedia itself, including policies and technical issues.</li>
+        <li><b><a href="#">Site news</a></b> – Sources of news about Wikipedia and the broader Wikimedia movement.</li>
+        <li><b><a href="#">Teahouse</a></b> – Ask basic questions about using or editing Wikipedia.</li>
+        <li><b><a href="#">Help desk</a></b> – Ask questions about using or editing Wikipedia.</li>
+        <li><b><a href="#">Reference desk</a></b> – Ask research questions about encyclopedic topics.</li>
+        <li><b><a href="#">Content portals</a></b> – A unique way to navigate the encyclopedia.</li>
+      </ul>
+
+      <h2 class="mp-h2">Wikipedia's sister projects</h2>
+      <p>Wikipedia is written by volunteer editors and hosted by the <a href="#">Wikimedia Foundation</a>, a non-profit organization that also hosts a range of other volunteer <a href="#">projects</a>:</p>
+      <div class="sister-grid">
+        <div class="sister-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Commons-logo.svg/80px-Commons-logo.svg.png" alt="Commons" /><div><strong><a href="#">Commons</a></strong>Free media repository</div></div>
+        <div class="sister-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/MediaWiki-2020-icon.svg/80px-MediaWiki-2020-icon.svg.png" alt="MediaWiki" /><div><strong><a href="#">MediaWiki</a></strong>Wiki software development</div></div>
+        <div class="sister-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Wikimedia_Community_Logo.svg/80px-Wikimedia_Community_Logo.svg.png" alt="Meta-Wiki" /><div><strong><a href="#">Meta-Wiki</a></strong>Wikimedia project coordination</div></div>
+        <div class="sister-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Wikibooks-logo.svg/80px-Wikibooks-logo.svg.png" alt="Wikibooks" /><div><strong><a href="#">Wikibooks</a></strong>Free textbooks and manuals</div></div>
+        <div class="sister-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Wikidata-logo.svg/80px-Wikidata-logo.svg.png" alt="Wikidata" /><div><strong><a href="#">Wikidata</a></strong>Free knowledge base</div></div>
+        <div class="sister-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Wikifunctions-logo.svg/80px-Wikifunctions-logo.svg.png" alt="Wikifunctions" /><div><strong><a href="#">Wikifunctions</a></strong>Catalog of computer functions</div></div>
+        <div class="sister-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Wikiquote-logo.svg/80px-Wikiquote-logo.svg.png" alt="Wikiquote" /><div><strong><a href="#">Wikiquote</a></strong>Collection of quotations</div></div>
+        <div class="sister-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Wikisource-logo.svg/80px-Wikisource-logo.svg.png" alt="Wikisource" /><div><strong><a href="#">Wikisource</a></strong>Free-content library</div></div>
+        <div class="sister-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Wikispecies-logo.svg/80px-Wikispecies-logo.svg.png" alt="Wikispecies" /><div><strong><a href="#">Wikispecies</a></strong>Directory of species</div></div>
+        <div class="sister-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Wikiversity_logo_2017.svg/80px-Wikiversity_logo_2017.svg.png" alt="Wikiversity" /><div><strong><a href="#">Wikiversity</a></strong>Free learning tools</div></div>
+        <div class="sister-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Wikivoyage-Logo-v3-icon.svg/80px-Wikivoyage-Logo-v3-icon.svg.png" alt="Wikivoyage" /><div><strong><a href="#">Wikivoyage</a></strong>Free travel guide</div></div>
+        <div class="sister-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Wiktionary-logo-en-v2.svg/80px-Wiktionary-logo-en-v2.svg.png" alt="Wiktionary" /><div><strong><a href="#">Wiktionary</a></strong>Dictionary and thesaurus</div></div>
+      </div>
+
+      <h2 class="mp-h2">Wikipedia languages</h2>
+      <p class="languages-intro">This Wikipedia is written in <a href="#">English</a>. Many <a href="#">other Wikipedias are available</a>; some of the largest are listed below.</p>
+
+      <div class="language-group">
+        <div class="language-count-row"><div class="bar"></div><div class="language-count">1,000,000+ articles</div><div class="bar"></div></div>
+        <ul class="language-links">
+          <li><a href="#">العربية</a></li><li><a href="#">Deutsch</a></li><li><a href="#">Español</a></li><li><a href="#">فارسی</a></li><li><a href="#">Français</a></li><li><a href="#">Italiano</a></li><li><a href="#">Nederlands</a></li><li><a href="#">日本語</a></li><li><a href="#">Polski</a></li><li><a href="#">Português</a></li><li><a href="#">Русский</a></li><li><a href="#">Svenska</a></li><li><a href="#">Українська</a></li><li><a href="#">Tiếng Việt</a></li><li><a href="#">中文</a></li>
+        </ul>
+      </div>
+
+      <div class="language-group">
+        <div class="language-count-row"><div class="bar"></div><div class="language-count">250,000+ articles</div><div class="bar"></div></div>
+        <ul class="language-links">
+          <li><a href="#">Bahasa Indonesia</a></li><li><a href="#">Bahasa Melayu</a></li><li><a href="#">Bân-lâm-gú</a></li><li><a href="#">Български</a></li><li><a href="#">Català</a></li><li><a href="#">Čeština</a></li><li><a href="#">Dansk</a></li><li><a href="#">Eesti</a></li><li><a href="#">Ελληνικά</a></li><li><a href="#">Esperanto</a></li><li><a href="#">Euskara</a></li><li><a href="#">עברית</a></li><li><a href="#">Հայերեն</a></li><li><a href="#">한국어</a></li><li><a href="#">Magyar</a></li><li><a href="#">Norsk bokmål</a></li><li><a href="#">Română</a></li><li><a href="#">Simple English</a></li><li><a href="#">Slovenčina</a></li><li><a href="#">Srpski</a></li><li><a href="#">Srpskohrvatski</a></li><li><a href="#">Suomi</a></li><li><a href="#">Türkçe</a></li><li><a href="#">Oʻzbekcha</a></li>
+        </ul>
+      </div>
+
+      <div class="language-group">
+        <div class="language-count-row"><div class="bar"></div><div class="language-count">50,000+ articles</div><div class="bar"></div></div>
+        <ul class="language-links">
+          <li><a href="#">Asturianu</a></li><li><a href="#">Azərbaycanca</a></li><li><a href="#">বাংলা</a></li><li><a href="#">Bosanski</a></li><li><a href="#">کوردی</a></li><li><a href="#">Frysk</a></li><li><a href="#">Gaeilge</a></li><li><a href="#">Galego</a></li><li><a href="#">Hrvatski</a></li><li><a href="#">ქართული</a></li><li><a href="#">Kurdî</a></li><li><a href="#">Latviešu</a></li><li><a href="#">Lietuvių</a></li><li><a href="#">മലയാളം</a></li><li><a href="#">Македонски</a></li><li><a href="#">မြန်မာဘာသာ</a></li><li><a href="#">Norsk nynorsk</a></li><li><a href="#">ਪੰਜਾਬੀ</a></li><li><a href="#">Shqip</a></li><li><a href="#">Slovenščina</a></li><li><a href="#">ไทย</a></li><li><a href="#">తెలుగు</a></li><li><a href="#">اردو</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="site-footer">Static local recreation of Wikipedia's main page layout for testing purposes.</div>
+  </main>
+
+  <button class="backtotop" id="backToTop" aria-label="Back to top">Top</button>
+
+  <script>
+    const backToTop = document.getElementById('backToTop');
+    const onScroll = () => {
+      backToTop.classList.toggle('visible', window.scrollY > 500);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    onScroll();
+  </script>
+</body>
+</html>
