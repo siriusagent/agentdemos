@@ -91,3 +91,12 @@
   - recorded that cache pressure still appears in bursts (`surfaceCacheSizeBeforeDecay` up to `290`, `surfaceCacheCapEvictions` up to `90`),
   - recorded that the dominant remaining stress signal is broadphase candidate growth (`surfaceTriangleCandidates` about `42k`, `surfaceEdgeCandidates` about `77k`) rather than blind cache saturation,
   - updated planning guidance so the next tuning pass targets broadphase/query selectivity before more cache-cap-only retuning.
+
+## 2026-05-26
+
+- Fixed portrait-mode layout on phones ≤480 px wide:
+  - Added dedicated `@media (max-width:480px)` rule in `style.css`.
+  - Receipt canvas now occupies full width of `.stage`; Receipt Lab panel renders directly beneath it.
+  - Removed absolute positioning and right padding that caused the lab panel to cover the receipt.
+  - Verified at 390×844 viewport: canvas and all controls fully visible and reachable with no overlap.
+  - Desktop and tablet layouts unchanged.

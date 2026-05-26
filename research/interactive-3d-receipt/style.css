@@ -265,3 +265,56 @@ canvas.grabbing { cursor:grabbing; }
     padding:0 4px 8px;
   }
 }
+
+@media (max-width: 480px) {
+  .stage {
+    padding: 12px;
+    padding-right: 12px;
+    overflow: visible;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .stage > canvas,
+  .stage > .debug-panel {
+    right: auto;
+  }
+
+  .stage > canvas {
+    grid-column: 1;
+    grid-row: 1;
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1020 / 800;
+    border-radius: 20px;
+  }
+
+  .control-panel {
+    grid-column: 1;
+    grid-row: 2;
+    position: relative;
+    right: auto;
+    top: auto;
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .lab-panel {
+    width: 100%;
+    max-width: none;
+  }
+
+  .debug-panel {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    top: auto;
+    margin-top: 12px;
+    max-width: none;
+    min-width: 0;
+  }
+}
