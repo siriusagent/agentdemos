@@ -154,7 +154,7 @@ export class Renderer {
   }
 
   resize() {
-    const r = this.canvas.parentNode.getBoundingClientRect();
+    const r = this.canvas.getBoundingClientRect();
     this.width = Math.max(1, Math.floor(r.width * CONFIG.DPR));
     this.height = Math.max(1, Math.floor(r.height * CONFIG.DPR));
     
