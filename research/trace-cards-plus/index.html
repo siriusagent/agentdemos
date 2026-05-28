@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Trace Cards+ — Whitespace, exceeded</title>
+<meta name="description" content="A 3D wireframe trace-sculpture experiment. Stacked translucent cards, orbiting traced geometry, bloom, audio reactivity. Built with Three.js." />
+<link rel="preconnect" href="https://unpkg.com" />
+<style>
+  :root{
+    --bg:#070708; --panel:rgba(16,17,19,0.72); --panel-solid:#0e0f11;
+    --line:rgba(255,255,255,0.08); --fg:#f4f5f7; --fg-dim:#8b9097;
+    --accent:#0BE0A0; --accent2:#00A8A5; --warn:#ffb454;
+    --radius:10px; --mono:"SF Mono",ui-monospace,"Cascadia Code",Menlo,monospace;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font-family:var(--sans);overflow:hidden;-webkit-font-smoothing:antialiased}
+  #stage{position:fixed;inset:0;display:block}
+  canvas{display:block;touch-action:none}
+
+  /* Header / brand */
+  .brand{position:fixed;top:18px;left:20px;z-index:30;pointer-events:none;user-select:none}
+  .brand h1{font-size:13px;letter-spacing:.34em;font-weight:600;margin:0;text-transform:uppercase}
+  .brand .sub{font-family:var(--mono);font-size:10px;color:var(--fg-dim);letter-spacing:.18em;margin-top:4px}
+
+  /* HUD */
+  .hud{position:fixed;top:16px;right:20px;z-index:30;font-family:var(--mono);font-size:10.5px;color:var(--fg-dim);
+    text-align:right;line-height:1.5;pointer-events:none;letter-spacing:.05em}
+  .hud b{color:var(--accent);font-weight:500}
+
+  /* Control panel */
+  .panel{position:fixed;top:0;right:0;height:100%;width:320px;z-index:25;background:var(--panel);
+    backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);
+    border-left:1px solid var(--line);transform:translateX(0);transition:transform .42s cubic-bezier(.2,.8,.2,1);
+    overflow-y:auto;overscroll-behavior:contain;padding:64px 0 40px}
+  .panel.hidden{transform:translateX(100%)}
+  .panel::-webkit-scrollbar{width:8px}
+  .panel::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:8px}
+
+  .grp{border-top:1px solid var(--line);padding:14px 18px 16px}
+  .grp:first-of-type{border-top:none}
+  .grp h3{font-family:var(--mono);font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--fg-dim);
+    margin:0 0 12px;font-weight:600;display:flex;align-items:center;gap:8px}
+  .grp h3::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent)}
+
+  .row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:9px 0;min-height:22px}
+  .row label{font-size:11.5px;color:var(--fg);flex:0 0 auto;letter-spacing:.01em}
+  .row .val{font-family:var(--mono);font-size:10.5px;color:var(--accent);min-width:42px;text-align:right}
+  input[type=range]{-webkit-appearance:none;appearance:none;flex:1;height:2px;background:rgba(255,255,255,.16);
+    border-radius:2px;outline:none;margin:0}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;
+    background:var(--fg);cursor:pointer;border:2px solid var(--bg);transition:transform .12s,background .12s}
+  input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.25);background:var(--accent)}
+  input[type=range]:active::-webkit-slider-thumb{background:var(--accent);box-shadow:0 0 0 4px rgba(11,224,160,.18)}
+
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+  .seg button{background:transparent;border:none;color:var(--fg-dim);font-family:var(--mono);font-size:10px;
+    padding:5px 11px;cursor:pointer;transition:.15s;letter-spacing:.06em}
+  .seg button.on{background:var(--accent);color:#06241a;font-weight:600}
+
+  select{background:var(--panel-solid);color:var(--fg);border:1px solid var(--line);border-radius:7px;
+    font-family:var(--mono);font-size:10.5px;padding:6px 8px;cursor:pointer;outline:none;max-width:150px}
+  input[type=color]{-webkit-appearance:none;width:26px;height:20px;border:1px solid var(--line);border-radius:5px;
+    background:none;cursor:pointer;padding:0}
+  input[type=color]::-webkit-color-swatch-wrapper{padding:1px}
+  input[type=color]::-webkit-color-swatch{border:none;border-radius:4px}
+
+  .toolbar{position:fixed;bottom:20px;left:20px;z-index:30;display:flex;gap:8px;flex-wrap:wrap;max-width:60vw}
+  .btn{background:var(--panel);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border:1px solid var(--line);color:var(--fg);font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+    padding:9px 14px;border-radius:8px;cursor:pointer;transition:.15s;text-transform:uppercase}
+  .btn:hover{border-color:var(--accent);color:var(--accent)}
+  .btn.active{background:var(--accent);color:#06241a;border-color:var(--accent)}
+
+  .toggle-panel{position:fixed;top:14px;right:20px;z-index:31}
+  .panel:not(.hidden) ~ .toggle-panel,.panel:not(.hidden) + .toggle-panel{}
+
+  .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);z-index:40;
+    background:var(--accent);color:#06241a;font-family:var(--mono);font-size:11px;font-weight:600;
+    padding:9px 18px;border-radius:8px;opacity:0;transition:.3s;pointer-events:none;letter-spacing:.06em}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  .hint{position:fixed;bottom:20px;right:20px;z-index:30;font-family:var(--mono);font-size:9.5px;
+    color:var(--fg-dim);letter-spacing:.08em;text-align:right;line-height:1.7;pointer-events:none}
+  .hint kbd{background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:4px;padding:1px 5px;color:var(--fg)}
+  @media(max-width:680px){.panel{width:100%}.hint,.hud{display:none}.toolbar{max-width:90vw}}
+</style>
+</head>
+<body>
+  <canvas id="stage"></canvas>
+
+  <div class="brand">
+    <h1>Trace&nbsp;Cards<span style="color:var(--accent)">+</span></h1>
+    <div class="sub">WIREFRAME · DEPTH · ORBIT</div>
+  </div>
+
+  <div class="hud" id="hud">
+    <div><b id="fps">––</b> fps</div>
+    <div id="info">––</div>
+  </div>
+
+  <button class="btn toggle-panel" id="togglePanel">Controls</button>
+
+  <aside class="panel" id="panel"><!-- built by JS --></aside>
+
+  <div class="toolbar">
+    <button class="btn" id="btnPause">Pause</button>
+    <button class="btn" id="btnReset">Reset View</button>
+    <button class="btn" id="btnAudio">Audio · Off</button>
+    <button class="btn" id="btnShot">Snapshot</button>
+    <button class="btn" id="btnShare">Copy Link</button>
+    <button class="btn" id="btnRandom">Randomize</button>
+  </div>
+
+  <div class="hint">
+    <div><kbd>drag</kbd> orbit · <kbd>scroll</kbd> zoom</div>
+    <div><kbd>Space</kbd> pause · <kbd>H</kbd> hide UI · <kbd>R</kbd> randomize</div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script type="importmap">
+  {
+    "imports":{
+      "three":"https://unpkg.com/three@0.161.0/build/three.module.js",
+      "three/addons/":"https://unpkg.com/three@0.161.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
