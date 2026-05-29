@@ -280,6 +280,13 @@ $('btnShare').onclick = async () => {
 $('btnRandom').onclick = randomize;
 $('togglePanel').onclick = () => panelEl.classList.toggle('hidden');
 
+// The panel starts collapsed in markup (no JS race) so the hero composition
+// is unobstructed on first load; the Controls toggle opens it. A shared ?s=
+// link opens the panel automatically so the recipient sees the tuned settings.
+if (new URLSearchParams(location.search).get('s')) {
+  panelEl.classList.remove('hidden');
+}
+
 function randomize() {
   const P = ['Pyramid', 'Diamond', 'Helix', 'Torus', 'Lissajous', 'Galaxy'];
   state.pattern = P[(Math.random() * P.length) | 0];
@@ -350,12 +357,19 @@ function tick() {
   pointer.y += (pointer.ty - pointer.y) * state.tiltLerp;
   formation.rotation.x = pointer.y * state.tiltAmount * 0.35;
   formation.rotation.z = -pointer.x * state.tiltAmount * 0.12;
+  // aspect-aware framing: fill the canvas and keep the subject centered.
+  // Wider viewports zoom in a touch more so the formation doesn't float in
+  // empty horizontal space; portrait viewports pull back to avoid clipping.
+  const aspect = innerWidth / innerHeight;
+  // a touch smaller so tall formations (pyramid/helix) clear the bottom edge.
+  const frameScale = THREE.MathUtils.clamp(0.98 + (aspect - 1) * 0.10, 0.92, 1.3);
+  const distFit = aspect < 1 ? 1.22 : 1.0; // portrait: ease camera back a bit
   formation.position.x += (0 - formation.position.x) * 0.08;
-  formation.position.y += (0.38 - formation.position.y) * 0.08;
-  formation.scale.setScalar(1.22);
-  controls.target.y += (0.28 - controls.target.y) * 0.08;
-  camera.position.z += (state.distance - camera.position.z) * 0.08;
-  camera.position.y += (1.65 - camera.position.y) * 0.08;
+  formation.position.y += (0.5 - formation.position.y) * 0.08; // lift to center mass + clear bottom
+  formation.scale.setScalar(frameScale);
+  controls.target.y += (0.28 - controls.target.y) * 0.08; // aim at center of mass
+  camera.position.z += (state.distance * distFit - camera.position.z) * 0.08;
+  camera.position.y += (1.25 - camera.position.y) * 0.08; // balanced eye height
   controls.update();
 
   const sc = getSculpture(state.pattern);
@@ -440,6 +454,16 @@ function tick() {
     $('fps').textContent = Math.min(fps, 120);
     $('info').textContent = `${state.pattern} · ${Math.round(state.cardCount)}×${Math.round(state.elementCount)} traces`;
     frames = 0;
+
+    // mirror liveness into the DOM so isolated-world automation (browser eval)
+    // can read real render state without sharing the page's JS world.
+    const ds = document.body.dataset;
+    ds.tcReady = '1';
+    ds.tcGl = (renderer && renderer.getContext && renderer.getContext()) ? 'ok' : 'fail';
+    ds.tcCards = String(cards.length);
+    ds.tcSceneChildren = String(scene.children.length);
+    ds.tcFps = String(Math.min(fps, 120));
+    ds.tcPattern = String(state.pattern);
   }
 }
 tick();

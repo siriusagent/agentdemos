@@ -19,7 +19,7 @@ export const state = {
   tiltAmount: 0.5, tiltLerp: 0.12, autoSpinX: 2, autoSpinY: 6,
   // Visual
   bgColor: '#070708',
-  lineOpacity: 0.92, ghostOpacity: 0.5, noise: 0.18,
+  lineOpacity: 0.92, ghostOpacity: 0.6, noise: 0.18,
   glowStrength: 0.85, glowRadius: 0.55, glowThreshold: 0.18,
   showCards: true, showTrails: true, showNodes: true, showStatic: true,
   colorA: '#0BE0A0', colorB: '#00A8A5',

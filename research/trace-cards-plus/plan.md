@@ -11,6 +11,7 @@ Build and maintain a polished static WebGL trace-sculpture demo that captures th
 - Post-processing includes bloom, vignette, and film grain.
 - A visual review already identified composition weaknesses in the initial pass: too much empty space, subject placement too low/right, and wireframe visibility too faint relative to nodes.
 - A follow-up pass partially corrected composition by lifting/scaling the formation and strengthening skeleton visibility.
+- 2026-05-29 rectify pass (RESOLVED): added a DOM-dataset automated-verification channel; made framing aspect-aware so the subject is fully in frame and balanced; raised `ghostOpacity` to 0.6; made the control panel start collapsed in markup (open only for shared `?s=` links). Verified at 1440x900 and 390x844 via headless Chromium + `vision_analyze` — all four flagged issues resolved on both viewports.
 
 ## Immediate priorities
 1. Finish migrating the prototype into the correct research workspace and keep docs aligned.
