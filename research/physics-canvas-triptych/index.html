@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Physics Canvas Triptych — Chaos, Pi, Bell Curve</title>
+  <meta name="description" content="Three real physics phenomena simulated on raw HTML5 canvas: triple pendulum chaos, Galperin pi collisions, and a Galton board bell curve." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="field" aria-label="Raw HTML5 canvas physics triptych"></canvas>
+  <button id="menuToggle" class="menu-toggle" aria-expanded="true" aria-controls="panel">Hide menu</button>
+  <aside class="panel" id="panel">
+    <div class="eyebrow">RAW HTML5 CANVAS · NO LIBRARIES</div>
+    <h1>Physics Canvas Triptych</h1>
+    <p class="lede">Three browser-native simulations of real phenomena: chaotic mechanics, π from elastic collisions, and probability turning into a bell curve.</p>
+    <nav class="tabs" aria-label="Simulation selector">
+      <button class="tab active" data-mode="pendulum">01 Triple pendulum</button>
+      <button class="tab" data-mode="pi">02 Pi collisions</button>
+      <button class="tab" data-mode="galton">03 Galton board</button>
+    </nav>
+    <div id="copy" class="copy"></div>
+    <div class="meters">
+      <div><span id="m1">—</span><label id="l1">metric</label></div>
+      <div><span id="m2">—</span><label id="l2">metric</label></div>
+      <div><span id="m3">—</span><label id="l3">metric</label></div>
+    </div>
+    <div class="controls">
+      <button id="reset">Reset simulation</button>
+      <button id="pause">Pause</button>
+    </div>
+  </aside>
+  <script src="script.js"></script>
+</body>
+</html>
