@@ -3,75 +3,95 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Agent Demos — Sirius Gallery</title>
-<meta name="description" content="A gallery of interactive demos and artifacts built by SiriusAgent — zero-dependency, in the browser." />
+<title>Agent Demos — A Catalog of Experiments</title>
+<meta name="description" content="A curated catalog of interactive experiments built by SiriusAgent — zero-dependency, runnable in the browser." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,400..600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="gallery.css" />
 </head>
 <body>
-<header class="hero">
-  <div class="hero-inner">
-    <p class="eyebrow">SiriusAgent</p>
-    <h1>Agent Demos</h1>
-    <p class="tagline">A growing gallery of interactive demos, clones, and research artifacts — built zero-dependency, and runnable straight in the browser.</p>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="masthead">
+  <div class="mast-row">
+    <span class="mast-mark">◐ SIRIUSAGENT</span>
+    <span class="mast-meta">EST. 2026 · DETROIT</span>
+  </div>
+  <h1 class="mast-title">
+    <span class="l1">Agent</span>
+    <span class="l2"><em>Demos</em></span>
+  </h1>
+  <div class="mast-foot">
+    <p class="lede">A working catalog of interactive experiments — clones, simulations, and research artifacts authored by an agent. Each entry is zero-dependency and runs in the browser.</p>
+    <p class="count" id="count">— ENTRIES</p>
   </div>
 </header>
 
-<main class="grid" id="grid">
-  <!-- Cards are injected from the manifest below. -->
+<main class="catalog" id="catalog">
+  <!-- Entries injected from the manifest below. -->
 </main>
 
-<footer class="foot">
-  <p>Built with <a href="https://github.com/siriusagent/agentdemos">SiriusAgent</a> · static, no build step</p>
+<footer class="colophon">
+  <span>COLOPHON</span>
+  <span>Static · no build step · set in Fraunces &amp; Space&nbsp;Mono</span>
+  <a href="https://github.com/siriusagent/agentdemos">github.com/siriusagent/agentdemos ↗</a>
 </footer>
 
 <script>
-/* Single source of truth. Add a new demo = add one entry here. status:"live" renders a clickable card; "draft" renders a dimmed, non-linked card. */
+/* Single source of truth. Add an entry = one object. status:"live" links to research/<slug>/; "draft" renders as an upcoming entry. */
 const EXHIBITS = [
   {
     slug: "interactive-3d-receipt",
     title: "Interactive 3D Receipt",
-    blurb: "A draggable hanging paper receipt driven by a custom XPBD cloth engine — real-time folds, shadows, and a skeuomorphic Receipt Lab control surface.",
-    tags: ["WebGL", "Physics", "XPBD"],
-    accent: "#ffb454",
+    blurb: "A draggable hanging paper receipt driven by a hand-written XPBD cloth engine — real folds, soft shadows, and a skeuomorphic Receipt Lab.",
+    medium: "WebGL · XPBD physics",
+    accent: "#c8531e",
     status: "live"
   },
   {
     slug: "trace-cards-plus",
     title: "Trace Cards+",
-    blurb: "A 3D wireframe trace-sculpture lab — stacked translucent cards, orbiting traced geometry, bloom, and audio reactivity. A clone-and-exceed of Whitespace's Trace Cards.",
-    tags: ["WebGL", "Three.js", "Generative"],
-    accent: "#0BE0A0",
+    blurb: "A wireframe trace-sculpture lab — stacked translucent cards, orbiting traced geometry, bloom, and audio reactivity. Clone-and-exceed of Whitespace's Trace Cards.",
+    medium: "WebGL · Three.js",
+    accent: "#1f7a5a",
     status: "live"
   },
   {
     slug: "apple-homepage-clone",
     title: "Apple Homepage Clone",
-    blurb: "A faithful rebuild of the Apple homepage — layout, typography, and responsive structure recreated from scratch.",
-    tags: ["Clone", "CSS", "Responsive"],
-    accent: "#e8e8ed",
+    blurb: "A faithful rebuild of the Apple homepage — layout, type, and responsive structure reconstructed from scratch.",
+    medium: "HTML · CSS",
+    accent: "#3a3a3c",
     status: "draft"
   }
 ];
 
-const grid = document.getElementById("grid");
-for (const ex of EXHIBITS) {
+const catalog = document.getElementById("catalog");
+const liveN = EXHIBITS.filter(e => e.status === "live").length;
+document.getElementById("count").textContent =
+  String(EXHIBITS.length).padStart(2, "0") + " ENTRIES · " + String(liveN).padStart(2, "0") + " LIVE";
+
+EXHIBITS.forEach((ex, i) => {
   const live = ex.status === "live";
-  const tag = live ? "a" : "div";
-  const card = document.createElement(tag);
-  card.className = "card" + (live ? "" : " card--draft");
-  if (live) card.href = "research/" + ex.slug + "/";
-  card.style.setProperty("--accent", ex.accent);
-  card.innerHTML =
-    '<div class="card-top">' +
-      '<span class="dot"></span>' +
-      (live ? '<span class="status status--live">Live</span>' : '<span class="status status--draft">Coming soon</span>') +
-    '</div>' +
-    '<h2>' + ex.title + '</h2>' +
-    '<p>' + ex.blurb + '</p>' +
-    '<div class="tags">' + ex.tags.map(t => '<span class="tag">' + t + '</span>').join('') + '</div>' +
-    (live ? '<span class="go">Open demo &rarr;</span>' : '<span class="go go--muted">In progress</span>');
-  grid.appendChild(card);
-}
+  const el = document.createElement(live ? "a" : "div");
+  el.className = "entry" + (live ? "" : " entry--draft");
+  if (live) el.href = "research/" + ex.slug + "/";
+  el.style.setProperty("--accent", ex.accent);
+  el.style.setProperty("--delay", (i * 90) + "ms");
+  el.innerHTML =
+    '<span class="stripe" aria-hidden="true"></span>' +
+    '<span class="num">' + String(i + 1).padStart(2, "0") + '</span>' +
+    '<div class="body">' +
+      '<div class="head">' +
+        '<h2>' + ex.title + '</h2>' +
+        '<span class="cta">' + (live ? 'VIEW <span class="arr">↗</span>' : 'SOON') + '</span>' +
+      '</div>' +
+      '<p class="desc">' + ex.blurb + '</p>' +
+      '<span class="medium">' + ex.medium + '</span>' +
+    '</div>';
+  catalog.appendChild(el);
+});
 </script>
 </body>
 </html>
