@@ -68,9 +68,37 @@ agent-made artifact to `siriusagent/agentdemos`.
 If the requested artifact depends on a private source repo, keep the source repo
 private. Export only the public demo surface.
 
+## Live Gallery
+
+The repository root is a static gallery (`index.html` + `gallery.css`) that
+links to every published demo. It is the GitHub Pages landing page:
+
+- Gallery: `https://siriusagent.github.io/agentdemos/`
+- Each demo is served at `https://siriusagent.github.io/agentdemos/research/<slug>/`
+
+Demos currently live in the gallery:
+
+- `research/interactive-3d-receipt/` — XPBD cloth-physics hanging receipt
+- `research/trace-cards-plus/` — WebGL trace-sculpture lab
+
+### Adding a demo to the gallery
+
+The gallery is manifest-driven. To add a demo, edit the `EXHIBITS` array near
+the bottom of root `index.html` and add one entry:
+
+```js
+{ slug: "<dir-under-research>", title: "...", blurb: "...",
+  tags: ["..."], accent: "#rrggbb", status: "live" }  // or "draft"
+```
+
+`status: "live"` renders a clickable card linking to `research/<slug>/`;
+`status: "draft"` renders a dimmed "Coming soon" card. No layout edits needed.
+
 ## GitHub Pages
 
-GitHub Pages may be enabled for this repository. When building a static demo,
+Pages deploys the **whole repository root** via
+`.github/workflows/pages.yml` on every push to `main`, so the gallery and all
+`research/<slug>/` demos are published together. When building a static demo,
 prefer plain static files unless a build step is explicitly useful. If a build
 tool is used, commit the public output and document the command that produced
 it.

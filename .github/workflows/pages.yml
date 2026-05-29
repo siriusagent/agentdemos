@@ -1,23 +1,16 @@
-name: Deploy Interactive 3D Receipt to GitHub Pages
-
+name: Deploy Agent Demos gallery to GitHub Pages
 on:
   push:
     branches:
       - main
-    paths:
-      - 'research/interactive-3d-receipt/**'
-      - '.github/workflows/interactive-3d-receipt-pages.yml'
   workflow_dispatch:
-
 permissions:
   contents: read
   pages: write
   id-token: write
-
 concurrency:
-  group: pages-interactive-3d-receipt
+  group: pages
   cancel-in-progress: true
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -27,15 +20,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Configure Pages
         uses: actions/configure-pages@v5
-
-      - name: Upload static site artifact
+      - name: Upload static site artifact (repo root = whole gallery)
         uses: actions/upload-pages-artifact@v3
         with:
-          path: research/interactive-3d-receipt
-
+          path: .
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

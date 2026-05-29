@@ -3,27 +3,75 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Interactive 3D Hanging Receipt</title>
-<link rel="stylesheet" href="style.css" />
+<title>Agent Demos — Sirius Gallery</title>
+<meta name="description" content="A gallery of interactive demos and artifacts built by SiriusAgent — zero-dependency, in the browser." />
+<link rel="stylesheet" href="gallery.css" />
 </head>
 <body>
-<main>
-  <section class="stage">
-    <canvas id="scene" aria-label="Interactive 3D hanging receipt cloth simulation"></canvas>
-    <div class="badge" id="statsBadge">XPBD Modular Physics · 35 × 75</div>
-    
-    <div class="control-panel">
-      <label>Light Dir</label>
-      <div class="knob-container" id="lightKnob" aria-label="Drag to rotate light direction">
-        <div class="knob-dial" id="knobDial"></div>
-      </div>
-    </div>
-  </section>
-  <div class="hint">Grab and drag the receipt. The new physics engine prevents crumpling and shearing.</div>
-  <nav style="position:fixed;top:12px;right:14px;z-index:50;font:600 11px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:.08em">
-    <a href="research/trace-cards-plus/" style="color:#0BE0A0;text-decoration:none;padding:7px 12px;border:1px solid rgba(11,224,160,.4);border-radius:8px;background:rgba(0,0,0,.35);backdrop-filter:blur(8px)">TRACE&nbsp;CARDS+&nbsp;&rarr;</a>
-  </nav>
+<header class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">SiriusAgent</p>
+    <h1>Agent Demos</h1>
+    <p class="tagline">A growing gallery of interactive demos, clones, and research artifacts — built zero-dependency, and runnable straight in the browser.</p>
+  </div>
+</header>
+
+<main class="grid" id="grid">
+  <!-- Cards are injected from the manifest below. -->
 </main>
-<script type="module" src="js/main.js?v=999"></script>
+
+<footer class="foot">
+  <p>Built with <a href="https://github.com/siriusagent/agentdemos">SiriusAgent</a> · static, no build step</p>
+</footer>
+
+<script>
+/* Single source of truth. Add a new demo = add one entry here. status:"live" renders a clickable card; "draft" renders a dimmed, non-linked card. */
+const EXHIBITS = [
+  {
+    slug: "interactive-3d-receipt",
+    title: "Interactive 3D Receipt",
+    blurb: "A draggable hanging paper receipt driven by a custom XPBD cloth engine — real-time folds, shadows, and a skeuomorphic Receipt Lab control surface.",
+    tags: ["WebGL", "Physics", "XPBD"],
+    accent: "#ffb454",
+    status: "live"
+  },
+  {
+    slug: "trace-cards-plus",
+    title: "Trace Cards+",
+    blurb: "A 3D wireframe trace-sculpture lab — stacked translucent cards, orbiting traced geometry, bloom, and audio reactivity. A clone-and-exceed of Whitespace's Trace Cards.",
+    tags: ["WebGL", "Three.js", "Generative"],
+    accent: "#0BE0A0",
+    status: "live"
+  },
+  {
+    slug: "apple-homepage-clone",
+    title: "Apple Homepage Clone",
+    blurb: "A faithful rebuild of the Apple homepage — layout, typography, and responsive structure recreated from scratch.",
+    tags: ["Clone", "CSS", "Responsive"],
+    accent: "#e8e8ed",
+    status: "draft"
+  }
+];
+
+const grid = document.getElementById("grid");
+for (const ex of EXHIBITS) {
+  const live = ex.status === "live";
+  const tag = live ? "a" : "div";
+  const card = document.createElement(tag);
+  card.className = "card" + (live ? "" : " card--draft");
+  if (live) card.href = "research/" + ex.slug + "/";
+  card.style.setProperty("--accent", ex.accent);
+  card.innerHTML =
+    '<div class="card-top">' +
+      '<span class="dot"></span>' +
+      (live ? '<span class="status status--live">Live</span>' : '<span class="status status--draft">Coming soon</span>') +
+    '</div>' +
+    '<h2>' + ex.title + '</h2>' +
+    '<p>' + ex.blurb + '</p>' +
+    '<div class="tags">' + ex.tags.map(t => '<span class="tag">' + t + '</span>').join('') + '</div>' +
+    (live ? '<span class="go">Open demo &rarr;</span>' : '<span class="go go--muted">In progress</span>');
+  grid.appendChild(card);
+}
+</script>
 </body>
 </html>
