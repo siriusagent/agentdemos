@@ -80,6 +80,7 @@ Demos currently live in the gallery:
 
 - `research/interactive-3d-receipt/` — XPBD cloth-physics hanging receipt
 - `research/trace-cards-plus/` — WebGL trace-sculpture lab
+- `research/apple-homepage-clone/` — static responsive Apple homepage clone
 
 ### Adding a demo to the gallery
 
