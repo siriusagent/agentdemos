@@ -82,6 +82,7 @@ Demos currently live in the gallery:
 - `research/trace-cards-plus/` — WebGL trace-sculpture lab
 - `research/apple-homepage-clone/` — static responsive Apple homepage clone
 - `research/physics-canvas-triptych/` — raw Canvas 2D physics triptych: chaos, π collisions, and bell curve
+- `research/hpb-pubmed-wiki/` — Wikipedia-style PubMed HPB research synthesis
 
 ### Adding a demo to the gallery
 

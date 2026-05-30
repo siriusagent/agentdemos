@@ -1,0 +1,304 @@
+{
+  "query": "((\"hepatopancreatobiliary\"[Title/Abstract] OR \"hepato-pancreato-biliary\"[Title/Abstract] OR \"HPB\"[Title/Abstract] OR \"pancreatic ductal adenocarcinoma\"[Title/Abstract] OR cholangiocarcinoma[Title/Abstract] OR \"hepatocellular carcinoma\"[Title/Abstract]) AND 2025:2026[pdat]) NOT retraction[Publication Type] NOT comment[Publication Type]",
+  "searched_via": "NCBI PubMed E-utilities esearch+efetch",
+  "count": "22408",
+  "ids": [
+    "42164474",
+    "42124320",
+    "42108649",
+    "42050803",
+    "41872676",
+    "41851965",
+    "41800715",
+    "41797299",
+    "41275879",
+    "42165596",
+    "42084851",
+    "42070116",
+    "42041104",
+    "42033418",
+    "42011763",
+    "42009371",
+    "42003514",
+    "42002886",
+    "41995675",
+    "41995074",
+    "41937349",
+    "41923376",
+    "41883111",
+    "41877645"
+  ],
+  "items": [
+    {
+      "pmid": "42164474",
+      "title": "Mechanism of Fibrotic Anastomosis Formation in Endoscopic Ultrasound-guided Hepaticogastrostomy Using a Plastic Stent: Insights From an Autopsy Case of Perihilar Cholangiocarcinoma.",
+      "journal": "DEN open",
+      "date": "2027 Apr",
+      "authors": [
+        "Maehara K",
+        "Mitsushita J",
+        "Shida T",
+        "Hirano K",
+        "Hattori D",
+        "Sato Y"
+      ],
+      "abstract": "Endoscopic ultrasound-guided hepaticogastrostomy (EUS-HGS) is an established alternative to other biliary drainage techniques for treating malignant biliary obstruction. Although the anastomosis created by EUS-HGS is believed to mature within several weeks, histopathological evidence supporting this assumption remains limited, particularly in procedures using plastic stents. Here, we report a case of perihilar cholangiocarcinoma in which an endosonographically created route (ESCR) formed by EUS-HGS using a plastic stent was histologically evaluated at autopsy. An 83-year-old man underwent EUS-HGS with a 7-Fr plastic stent for recurrent biliary obstruction after duodenal stenosis, which made endoscopic retrograde cholangiography infeasible. The patient died of disease progression 141 days after the initial EUS-HGS, and an autopsy was performed. Macroscopic evaluation revealed adhesions between the liver and stomach at the ESCR site. Masson's trichrome staining revealed a well-defined concentric fibrotic tunnel surrounding the stent tract, with fibrotic thickness comparable to the stent diameter. Fibrotic changes varied across tissue layers, being minimal at the mucosal penetration site and most pronounced at the subserosal and serosal levels. Previous reports of EUS-guided biliary drainage with self-expandable metallic stents suggest that radial force contributes to anastomosis maturation. In contrast, the present case demonstrates that a robust fibrotic ESCR can develop even after EUS-HGS with a plastic stent lacking sustained radial force. These findings provide pathological evidence for structural stabilization of ESCR and support the structural basis for trans-ESCR procedures.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42164474/"
+    },
+    {
+      "pmid": "42124320",
+      "title": "Centromere protein I promotes hepatocellular carcinoma progression by activating PI3K/AKT/mTOR-CDK2 cascade.",
+      "journal": "Cancer biology & therapy",
+      "date": "2026 Dec 31",
+      "authors": [
+        "Liu D",
+        "Yang P",
+        "Wang J",
+        "Li J",
+        "Wang X",
+        "Gu X"
+      ],
+      "abstract": "Hepatocellular carcinoma (HCC) is characterized by high recurrence rates and limited targeted therapies. Centromere protein I (CENPI), a core kinetochore component linked to chromosomal instability, is dysregulated in multiple malignancies, yet its role and mechanism in HCC progression remain incompletely elucidated. CENPI expression was quantified in paired human HCC tissues and orthotopic rat HCC models via immunohistochemistry (IHC) and western blot (WB). Gain- and loss-of-function assays were performed in HepG2 cells and validated in Hep3B cells to evaluate the effects of CENPI modulation on cell proliferation, migration, invasion, apoptosis, and cell cycle dynamics. Mechanistic analyses included pathway enrichment and WB, with validation via rapamycin in HepG2 cells and LY294002 in Hep3B cells. In vivo tumor growth and signaling alterations were assessed in orthotopic HCC models following CENPI silencing. CENPI was upregulated in HCC tissues and orthotopic tumors, correlating with poor survival. CENPI depletion suppressed proliferation, migration, invasion, and epithelial-mesenchymal transition (EMT), while enhancing apoptosis and inducing G1 arrest; overexpression was pro-oncogenic. Mechanistically, CENPI activated the PI3K/AKT/mTOR-CDK2 axis, upregulating CDK2, and modulating EMT markers. Rapamycin abrogated CENPI-induced oncogenic signaling in vitro, and CENPI silencing reduced in vivo tumor burden by 65% while suppressing the pathway and EMT. CENPI may function as an oncogenic regulator in HCC through activation of the PI3K/AKT/mTOR-CDK2 cascade, linking cell cycle progression to EMT-associated invasiveness. These findings provide a preclinical rationale for further evaluating CENPI and its related signaling axis as potential prognostic and therapeutic targets in broader HCC models and clinical cohorts.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42124320/"
+    },
+    {
+      "pmid": "42108649",
+      "title": "Gut microbes mediate the synergistic effects of dietary cholesterol and saturated fat in driving fibrosing MASH.",
+      "journal": "Gut microbes",
+      "date": "2026 Dec 31",
+      "authors": [
+        "Hermanson JB",
+        "Tolba SA",
+        "Gazi MA",
+        "Chrisler EA",
+        "Kaur M",
+        "Sidebottom AM"
+      ],
+      "abstract": "Metabolic dysfunction-associated steatotic liver disease (MASLD) affects approximately one-third of the global population and can progress to metabolic dysfunction-associated steatohepatitis (MASH) with fibrosis, increasing the risk of cirrhosis, hepatocellular carcinoma, and mortality. Gut microbes driven by diets high in saturated fat, simple sugar, and cholesterol contribute to disease progression, yet the underlying mechanisms remain undefined. We explored the independent and synergistic effects of dietary saturated fat and cholesterol on MASH development using specific pathogen-free (SPF) and germ-free (GF) mice. We demonstrate that (1) both dietary cholesterol and saturated fat are required to induce fibrosing MASH in SPF mice, whereas GF mice are protected, (2) saturated fat and cholesterol individually alter gut microbial membership, potentially via altered bile acid metabolism, while their combination promotes a distinct composition, including an increase in Parasutterella spp. which correlates with hepatic fibrosis, and (3) diluted cecal contents from SPF, but not GF, mice fed high-fat, high-cholesterol diets are enriched in deoxycholic acid and activate human hepatic stellate cells in vitro, suggesting a mechanistic link between dietary lipid-induced microbiota and liver fibrogenesis. These findings reveal how specific Western dietary components shape the gut microbiota and contribute to hepatic fibrosis via stellate cell activation, offering potential targets for therapeutic interventions against MASLD/MASH.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42108649/"
+    },
+    {
+      "pmid": "42050803",
+      "title": "Parthenolide inhibits the progression of intrahepatic cholangiocarcinoma by promoting ferroptosis through inhibiting UBD.",
+      "journal": "Cancer biology & therapy",
+      "date": "2026 Dec 31",
+      "authors": [
+        "Xie Y",
+        "Wang J",
+        "Zhou J",
+        "Peng Y",
+        "Wang Y",
+        "Wang Y"
+      ],
+      "abstract": "This study aimed to investigate the antitumor activity and molecular mechanism of Parthenolide (Par) against intrahepatic cholangiocarcinoma (ICC), a highly malignant liver tumor with poor prognosis, to explore potential new treatment strategies. Par was identified through screening an FDA compound library. In vitro assays were performed to assess its effects on ICC cell proliferation, colony formation, invasion, migration, cell cycle, and apoptosis. An in vivo nude mouse tumor model was used to evaluate tumor growth inhibition. Transcriptomic analysis, molecular docking, and cellular thermal shift assays were employed to identify key targets and pathways. Changes in ferroptosis-related markers, including iron ion levels, lipid peroxides, SOD activity, and GPX4 expression, were measured. Rescue experiments with the ferroptosis inhibitor ferrostatin-1 were conducted to validate the role of ferroptosis. Par significantly inhibited ICC cell proliferation, colony formation, invasion, and migration, induced G2/M phase arrest, and promoted apoptosis in vitro; and suppressed tumor growth in vivo. Transcriptomic analysis showed upregulation of HMOX-1 and downregulation of Ubiquitin D (UBD) after Par treatment. Par was confirmed to bind to the UBD protein. Enrichment analysis indicated ferroptosis as a key pathway, with Par treatment leading to increased iron ions, lipid peroxide accumulation, reduced SOD activity, and downregulated GPX4. Ferrostatin-1 partially reversed Par-induced inhibitory effects. This study demonstrates for the first time that Par exerts anti-ICC effects related to inhibition of UBD, thereby activating the ferroptosis pathway. These findings provide a novel potential strategy and therapeutic target for ICC treatment.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42050803/"
+    },
+    {
+      "pmid": "41872676",
+      "title": "Sex determines the natural killer cell-mediated immunity against pancreatic cancer.",
+      "journal": "Oncoimmunology",
+      "date": "2026 Dec 31",
+      "authors": [
+        "Arlt E",
+        "Bley N",
+        "Rausch A",
+        "Hauser S",
+        "Pietzsch J",
+        "Misiak D"
+      ],
+      "abstract": "Pancreatic ductal adenocarcinoma (PDAC) ranks among the most aggressive malignancies and exhibits a higher prevalence and poorer prognosis in male patients. While both the importance of natural killer (NK) cells in anti-tumor immunity and sex differences in NK cell function are well established, the interplay between biological sex and NK cell-mediated responses in PDAC has not been systematically addressed. Here, we provide novel insights revealing that both the intrinsic cytotoxic capacity of NK cells and the tumor microenvironment differ between sexes and jointly modulate anti-tumor immunity in PDAC. Using in vitro assays with primary NK cells from male and female mice, we found that female-derived NK cells exhibit consistently superior cytotoxic activity and immune activation. Importantly, these findings were reflected and even amplified in vivo. In a syngeneic allograft PDAC model, female mice displayed enhanced NK cell function, and female tumors exhibited distinct structural characteristics supporting stronger NK cell activity. Notably, this occurred despite the use of the same cell line in both sexes, indicating that host sex significantly shapes the composition and architecture of the tumor microenvironment. Our results provide new evidence that sex differences in NK cell-mediated immunity, within the broader immune and stromal landscape, may differentially impact tumor control in male and female PDAC hosts. This study therefore underscores the importance of considering sex as a biological variable in the preclinical evaluation of pancreatic cancer therapies.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41872676/"
+    },
+    {
+      "pmid": "41851965",
+      "title": "Immunogenicity of neoantigens from hepatocellular carcinoma patients treated with a combined radioimmunotherapy.",
+      "journal": "Oncoimmunology",
+      "date": "2026 Dec 31",
+      "authors": [
+        "Aparicio B",
+        "Silva L",
+        "Ruiz M",
+        "Ll\u00f3piz D",
+        "Rep\u00e1raz D",
+        "Theunissen P"
+      ],
+      "abstract": "In some cancers, patients responding to immune checkpoint inhibitors (ICI) usually harbor tumors with a higher tumor mutational burden and increased lymphocyte infiltration targeting mutation-derived neoantigens (neoAgs). In the NASIR-HCC trial, patients with hepatocellular carcinoma (HCC) received selective internal radiation therapy and the anti-PD-1 antibody Nivolumab, but many of them did not achieve clinical benefit (B). Since neoAg-based vaccination could enhance tumor infiltration and ICI responses, we studied neoAg-specific immunity in these patients and assessed whether patients with no benefit (NB) harbored sufficient immunogenic neoAgs for therapeutic vaccination. Using predicted neoAgs from 6 B and 4 NB patients, we tested immune reactivity in vitro. NeoAg-specific responses were detected in 75% of B and 83% of NB patients, recognizing 37% and 63% of neoAgs tested, respectively. In vivo immunization experiments in HLA transgenic HHD-DR1 mice using HLA-A*02.01- or HLA-DRB1*01-predicted neoAgs from four NB patients revealed responses against most neoAgs (87% and 73%, respectively), expanding the repertoire of immunogenic epitopes. Finally, polyepitopic peptide vaccination containing neoAgs from an NB patient induced stronger and broader T-cell responses compared to polyepitopic DNA vaccine. Our results demonstrate the immunogenicity of neoAgs in our cohort, supporting their potential utility in therapeutic vaccines designed to boost antitumor immunity.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41851965/"
+    },
+    {
+      "pmid": "41800715",
+      "title": "Immunotherapy impact of macrophage glycosylation on cholangiocarcinoma and its prognostic and immune microenvironment significance.",
+      "journal": "Human vaccines & immunotherapeutics",
+      "date": "2026 Dec 31",
+      "authors": [
+        "Xu Y",
+        "Xu X",
+        "Xu Y",
+        "Duan J"
+      ],
+      "abstract": "Cholangiocarcinoma (CCA) has a complex tumor microenvironment that critically influences tumor progression and therapeutic resistance. Glycosylation abnormalities have been linked to cancer growth and progression. This work was designed to develop a prognostic model based on glycosylation-related genes (GRGs) for predicting CCA outcomes and immunotherapy responses. Glycosylation patterns in macrophage subsets of CCA were analyzed via scRNA-seq. Key genes were identified by integrating module genes from WGCNA and DEGs. A risk model for CCA was established utilizing LASSO Cox regression. In vitro tests were conducted to validate the function of PGK1. The immune checkpoint blockade group exhibited elevated M1 signature scores and higher glycosylation levels. A risk model incorporating five genes (ANXA3, PGK1, PLAUR, CREB5, SPP1) for CCA was established. The high macrophage glycosylation-related risk score group had a considerable infiltration of M0 macrophages. In vitro experiments confirmed that PGK1 advanced glycation end products accumulation, drove M2 polarization of macrophages, and increased CCA cell proliferation and migration. This work proposes a glycosylation-based risk model for predicting CCA prognosis and directing therapeutic strategies. PGK1 is highlighted as a potential therapeutic target in CCA.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41800715/"
+    },
+    {
+      "pmid": "41797299",
+      "title": "KRAS-elicited PDIA6 blocks PERK-dependent immunogenic cell death in pancreatic carcinoma.",
+      "journal": "Oncoimmunology",
+      "date": "2026 Dec 31",
+      "authors": [
+        "Zhao L",
+        "Liu P",
+        "Kroemer G",
+        "Kepp O"
+      ],
+      "abstract": "KRAS-mutant pancreatic ductal adenocarcinoma (PDAC) remains largely refractory to immune checkpoint blockade. Wang et al. identified PDIA6 as a KRAS-driven suppressor of PERK-dependent immunogenic cell death, fostering immune exclusion. PDIA6 inhibition restores CD8+ T-cell immunity and sensitizes PDAC to immunotherapy, highlighting a targetable resistance mechanism in KRAS-mutant PDAC.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41797299/"
+    },
+    {
+      "pmid": "41275879",
+      "title": "Preoperative mFOLFIRINOX versus PAXG for stage I-III resectable and borderline resectable pancreatic ductal adenocarcinoma (PACT-21 CASSANDRA): results of the first randomisation analysis of a randomised, open-label, 2\u2009\u00d7\u20092 factorial phase 3 trial.",
+      "journal": "Lancet (London, England)",
+      "date": "2026 Dec 20",
+      "authors": [
+        "Reni M",
+        "Macchini M",
+        "Orsi G",
+        "Procaccio L",
+        "Malleo G",
+        "Carconi C"
+      ],
+      "abstract": "Perioperative chemotherapy is a standard option for treatment of patients with resectable and borderline resectable pancreatic ductal adenocarcinoma (PDAC). This study aimed to assess the superiority of PAXG (cisplatin, nab-paclitaxel, capecitabine, and gemcitabine) over mFOLFIRINOX (modified fluorouracil, leucovorin, irinotecan, and oxaliplatin) in this population. CASSANDRA is a randomised, open-label, 2\u2009\u00d7\u20092 factorial phase 3 trial, involving 17 Italian academic hospitals. Eligible patients were aged 18-75 years with pathologically confirmed resectable or borderline resectable PDAC. Randomisation was performed by a central web-based system using R-code lists with a computerised algorithm. The design adopted a 1:1 randomisation, with a block stratification by centre and carbohydrate antigen 19-9. Participants were first randomly assigned PAXG (total daily capecitabine dose of 1250 mg/m2 in a 625 mg/m2 twice a day dosage and intravenous cisplatin 30 mg/m2, nab-paclitaxel 150 mg/m2, and gemcitabine 800 mg/m2 every 14 days) or mFOLFIRINOX (intravenous fluorouracil 2400 mg/m2, leucovorin 400 mg/m2, irinotecan 150 mg/m2, and oxaliplatin 85 mg/m2 every 14 days) for 4 months, followed by a second randomisation to 2 months of additional chemotherapy either before or after surgery. The primary endpoint was event-free survival (EFS) in the intention-to-treat population and the safety population included all patients who received at least one cycle of the assigned therapy. The results of the first randomisation are reported here. The trial, registered on ClinicalTrials.gov (NCT04793932) and EudraCT (2020-003080-26 and 2024-519031-42-00), completed accrual and reached the necessary events for first randomisation primary analysis but follow-up of overall survival is ongoing. Between Nov 3, 2020, and April 24, 2024, 132 eligible patients were assigned to PAXG and 128 to mFOLFIRINOX. In the PAXG group, the median age was 65 years (IQR 60-70), 68 (52%) of 132 patients were female, and 64 (48%) were male. In the mFOLFIRNOX group, the median age was 63 years (IQR 57-69), 62 (48%) of 128 patients were female, and 66 (52%) were male. All 260 patients received at least one assigned chemotherapy administration. PAXG prolonged the median EFS compared with mFOLFIRINOX (16\u00b70 months [95% CI 12\u00b74-19\u00b78] vs 10\u00b72 months [8\u00b76-13\u00b75]; hazard ratio 0\u00b763 [0\u00b747-0\u00b784]; p=0\u00b70018). At least one grade 3 or worse adverse event was observed in 87 (66%) of 132 patients in the PAXG group and in 78 (61%) of 128 patients in the mFOLFIRINOX group, including one fatal event. PAXG significantly improved EFS compared with mFOLFIRINOX in resectable or borderline resectable PDAC. Preopertive PAXG could be considered a standard option for resectable or borderline resectable PDAC. Accordingly, preoperative PAXG should be considered as the standard comparator group for future trials in this setting. MyEverest and Codice Viola.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41275879/"
+    },
+    {
+      "pmid": "42084851",
+      "title": "Transient receptor potential channels in Flaviviridae infection: A comprehensive review.",
+      "journal": "Channels (Austin, Tex.)",
+      "date": "2026 Dec",
+      "authors": [
+        "Jiang F",
+        "Yao X",
+        "Zheng CB"
+      ],
+      "abstract": "Diseases caused by Flaviviridae viruses exert profound global health and economic burdens due to their high incidence and associated mortality. Infection by the Flaviviridae family often leads to severe acute or chronic illnesses, including hemorrhagic systemic diseases caused by dengue virus (DENV) and yellow fever virus, neurological complications associated with West Nile virus and Zika virus (ZIKV) infection, as well as liver damage and hepatocellular carcinoma resulting from hepatitis C virus (HCV) infection. Accumulating evidence indicates that a hallmark of Flaviviridae infection is to hijack calcium (Ca2+) signaling of the host cells, consequently facilitating viral entry, RNA replication, viral assembly, and release. Transient receptor potential (TRP) channels, a superfamily of nonselective cation channels, are central regulators of intracellular Ca2+ homeostasis. Recent studies reveal that TRP channels are closely involved in Flaviviridae infection. This comprehensive review synthesizes current findings on the role of TRP channels (e.g. TRPC, TRPV, TRPA, TRPM, and TRPML) in the pathogenesis of Flaviviridae viruses such as DENV, ZIKV, HCV, and Japanese encephalitis virus. Moreover, this review summarizes virus-TRP channel interaction mechanisms and discusses the potential of targeting TRP channels for host-directed antiviral therapies. This review aims to establish a conceptual framework for understanding TRP channel biology in Flaviviridae infection and to guide future research on antiviral strategies. Future directions should highlight the potential utility of TRP channel research for advancing anti-Flaviviridae therapies and clarifying their underlying mechanisms.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42084851/"
+    },
+    {
+      "pmid": "42070116",
+      "title": "Metformin counteracts lipid accumulation and cell proliferation in hepatocellular carcinoma via regulating METTL3-mediated m6A methylation.",
+      "journal": "Cell cycle (Georgetown, Tex.)",
+      "date": "2026 Dec",
+      "authors": [
+        "Qi Y",
+        "Chen C",
+        "Dai Y",
+        "Wang Z",
+        "Liu X",
+        "Guo C"
+      ],
+      "abstract": "Metformin, a first-line antidiabetic drug, has demonstrated anticancer potential in various malignancies, yet its precise mechanisms in hepatocellular carcinoma (HCC) remain incompletely defined. Here, we show that metformin inhibits lipid accumulation and proliferation in HCC cells through modulation of N6-methyladenosine (m6A) RNA methylation. Treatment of HepG2 and Huh7 cells with metformin significantly reduced intracellular triglyceride and cholesterol levels, concomitant with decreased lipid droplet accumulation and impaired cell proliferation. Mechanistically, metformin lowered global m6A methylation by downregulating the m6A methyltransferase Methyltransferase-like 3 (METTL3), while upregulating the demethylase Fat mass and obesity-associated protein (FTO). Functional assays revealed that METTL3 overexpression restored lipid accumulation and proliferation in metformin-treated cells, whereas METTL3 knockdown phenocopied the lipid-lowering and anti-proliferative effects of metformin. Further analyses identified the METTL3/ACC1/FASN axis as a critical downstream pathway, with metformin suppressing m6A modification and expression of Fatty acid synthase (FASN) and Acetyl-CoA carboxylase 1 (ACC1) transcripts - effects reversed by METTL3 overexpression. These findings establish METTL3 as a central mediator of metformin's metabolic and antiproliferative activities in HCC, uncovering a previously unappreciated epitranscriptomic mechanism by which metformin impedes tumor progression.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42070116/"
+    },
+    {
+      "pmid": "42041104",
+      "title": "RTA\u2011408 induces p38\u2011dependent apoptosis and suppresses cell viability in hepatocellular carcinoma cells.",
+      "journal": "Hepatic oncology",
+      "date": "2026 Dec",
+      "authors": [
+        "Chen WC",
+        "Chong YB",
+        "Tsai HP",
+        "Tseng TT",
+        "Wang CY",
+        "Kuo SH"
+      ],
+      "abstract": "Hepatocellular carcinoma (HCC) remains difficult to treat, highlighting the need for new therapeutic strategies. RTA-408 (omaveloxolone), a synthetic oleanane triterpenoid and NRF2 pathway modulator, has reported anticancer activity, but its mechanisms in HCC are not fully understood. HepG2 and PLC/PRF/5 (PP5) cells were treated with RTA-408 for 24\u2009h. Cell viability, apoptosis, and signaling pathways were evaluated using MTT assay, Annexin V/7-AAD flow cytometry, and western blotting. The role of p38 signaling was examined using the p38 inhibitor SB203580. RTA-408 reduced cell viability in a concentration-dependent manner and increased apoptosis in both cell lines. At 600\u2009nM, apoptosis increased to approximately 18.43% in HepG2 cells and 24.71% in PP5 cells. RTA-408 increased p38 phosphorylation and NRF2 expression and was accompanied by LC3B and p62 accumulation and elevated cleaved caspase-3. Inhibition of p38 partially restored cell viability and reduced apoptosis. RTA-408 suppresses HCC cell survival through a p38-dependent stress response associated with NRF2 activation and LC3B/p62 accumulation.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42041104/"
+    },
+    {
+      "pmid": "42033418",
+      "title": "Cost-effectiveness analysis of atezolizumab and bevacizumab as first-line systemic therapy in unresectable hepatocellular carcinoma in Malaysia.",
+      "journal": "Journal of medical economics",
+      "date": "2026 Dec",
+      "authors": [
+        "Wong YF",
+        "Mohamed R",
+        "Sulaiman Shah AA",
+        "Chaiyakunapruk N",
+        "Patikorn C"
+      ],
+      "abstract": "This study aims to evaluate the cost-effectiveness of atezolizumab plus bevacizumab as first-line systemic therapy for unresectable hepatocellular carcinoma (uHCC) in Malaysia, compared with the current standard treatments in the Malaysian Ministry of Health (MOH) to inform public healthcare decision\u2011making. A cost-effectiveness analysis was conducted from the MOH perspective, following the national pharmacoeconomic guidelines (2019). The study compared atezolizumab plus bevacizumab with sorafenib and lenvatinib, respectively, using a partitioned survival model to project health outcomes and costs over a lifetime horizon. Clinical efficacy data were sourced from published trials and network meta-analyses. Cost inputs reflected local healthcare resource use and prices, using 2024 Malaysian Ringgit values inflated via the Consumer Price Index for Health. Costs and outcomes were discounted at 3% annually. Deterministic and probabilistic sensitivity analyses were performed to assess the impact of key parameter uncertainties on the results. Atezolizumab plus bevacizumab provided the highest quality-adjusted life years (QALYs) and life years compared to sorafenib and lenvatinib. Sorafenib was dominated by lenvatinib due to lower QALYs and higher costs and excluded from further analysis. Compared to lenvatinib, atezolizumab plus bevacizumab yielded 0.873 additional QALYs and RM 44,863 additional cost, resulting in an incremental cost-effectiveness ratio (ICER) of RM 51,399 per QALY gained (\u223c0.906 GDP/capita at Malaysia's 2024 GDP/capita RM 56,734). Atezolizumab plus bevacizumab is cost-effective compared to lenvatinib and sorafenib across willingness-to-pay (WTP) values of one to three times Malaysia's GDP per capita. These findings provide evidence to inform public health policy that expanding funding and adoption of atezolizumab plus bevacizumab is likely to improve health outcomes cost-effectively.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42033418/"
+    },
+    {
+      "pmid": "42009371",
+      "title": "Development and validation of a digital PCR assay targeting plasma FAR1 methylation for early detection of hepatocellular carcinoma.",
+      "journal": "Epigenetics",
+      "date": "2026 Dec",
+      "authors": [
+        "Park SJ",
+        "Lee YY",
+        "Chung YK",
+        "Jung BH",
+        "An J",
+        "Han J"
+      ],
+      "abstract": "Hepatocellular carcinoma (HCC) is a leading cause of cancer-related mortality worldwide, yet current surveillance with alpha-fetoprotein (AFP) and ultrasound (US) lacks sufficient accuracy, particularly for early-stage disease. This study aimed to develop and clinically validate a blood-based digital PCR (dPCR) assay targeting novel methylation biomarkers for HCC detection. Genome-wide methylation profiles from HCC, normal, and other cancer types were analysed to identify candidates, which were then screened and verified in cancer cell lines, primary tumour tissues, and plasma specimens. A total of 186 plasma samples were evaluated, including 66\u00a0healthy controls, 60 patients with chronic liver disease (CLD) without HCC, and 60 patients with HCC. FAR1 methylation emerged as an HCC-specific biomarker, showing significantly higher levels in liver cancer cell lines and HCC tumour tissues compared with controls. A dPCR assay targeting FAR1 achieved 70.0% sensitivity (42/60; 95% CI, 56.8%-81.2%) and 96.8% specificity (122/126; 95% CI, 92.1-99.1%), with an area under the curve (AUC) of 0.90 (95% CI, 0.85-0.96). Combining FAR1 with AFP improved sensitivity to 88.3% (53/60; 95% CI, 77.4%-95.2%) while maintaining 96.8% specificity. Notably, early-stage HCC (Barcelona Clinic Liver Cancer [BCLC] stage 0-A) was detected with 85.4% sensitivity (35/41; 95% CI, 77.4%-94.4%). This blood-based dPCR assay demonstrated high diagnostic performance, underscoring its potential as a noninvasive tool to enhance early detection and clinical management of HCC in high-risk populations.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42009371/"
+    },
+    {
+      "pmid": "42003514",
+      "title": "Absence of steatosis combined with cardiometabolic risk factors confers the highest hepatocellular carcinoma risk in treated chronic hepatitis B.",
+      "journal": "Annals of medicine",
+      "date": "2026 Dec",
+      "authors": [
+        "Wang HW",
+        "Lai HC",
+        "Hsu WF",
+        "Chen SH",
+        "Kuo YC",
+        "Peng CY"
+      ],
+      "abstract": "Chronic hepatitis B (CHB) is a major cause of hepatocellular carcinoma (HCC). In patients receiving CHB treatment, coexistence of steatotic liver disease (SLD) and cardiometabolic risk factors (CMRFs) markedly influence HCC risk. This study explored hepatic and metabolic profiles, HCC predictors, and the modifying roles of SLD and CMRFs in CHB. This study included 1012 patients receiving nucleos(t)ide analogs between 2004 and 2022. They were stratified into SLD (N\u2009=\u2009702) or non-SLD (N\u2009=\u2009310) groups. Over a 5.5-year follow-up period, 73 patients developed HCC. At baseline, the SLD group had younger age, higher body mass index values, lower fibrosis indices, and more severe metabolic dysregulation than did the non-SLD group. SLD conferred protection against HCC (adjusted hazard ratio: 0.43; p\u2009=\u20090.001). However, the presence of \u22652 CMRFs significantly increased HCC risk (adjusted hazard ratio: 1.93; p\u2009=\u20090.009). The highest HCC risk was observed in patients without SLD having \u22652 CMRFs (5-year incidence rate: 21.4%). The protective effect of SLD persisted after inverse probability of treatment weighting. It was most pronounced in older, cirrhotic, and high-metabolic-risk subgroups. Hepatitis B virus DNA suppression, hepatitis B surface antigen decline, and fibrosis score improvement during treatment were similar between the two groups. Among patients with CHB receiving nucleos(t)ide analogs, those without SLD having \u22652 CMRFs had the highest risk of HCC. Thus, steatosis and metabolic burden should be incorporated into precision risk stratification.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42003514/"
+    },
+    {
+      "pmid": "42002886",
+      "title": "Meox1 promotes hepatocellular carcinoma progression potentially via regulation of cell cycle and p21 expression.",
+      "journal": "Cell adhesion & migration",
+      "date": "2026 Dec",
+      "authors": [
+        "Ruan J",
+        "Xie Y",
+        "Zhang C",
+        "Sun D"
+      ],
+      "abstract": "Meox1 is aberrantly expressed in several malignancies, but its role in hepatocellular carcinoma (HCC) remains unclear. This study aimed to investigate the effects of Meox1 on HCC cells and explore the underlying molecular mechanisms. Cell proliferation, colony formation, migration, invasion, and cell cycle distribution were assessed by CCK-8, clonogenic, Transwell, and flow cytometry assays, respectively. Protein expression was examined by Western blotting. Meox1 silencing significantly inhibited proliferation, clonogenic capacity, migration and invasion of HCC cells. Cell cycle analysis showed a reduction in G1-phase cells with a marked accumulation in the G2 phase following Meox1 knockdown. Western blot analysis revealed that suppression of Meox1 reduced p21CIP1/WAF1 expression. Meox1 contributest to HCC progression and may represent a potential therapeutic target.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42002886/"
+    },
+    {
+      "pmid": "41995675",
+      "title": "Oncolytic virus therapy for hepatocellular carcinoma: A bibliometric analysis of research landscapes, hotspots, and clinical transformation trends from 2000 to mid-2025.",
+      "journal": "Human vaccines & immunotherapeutics",
+      "date": "2026 Dec",
+      "authors": [
+        "Yu F",
+        "Yin S",
+        "Zhu J",
+        "Sun K"
+      ],
+      "abstract": "This study aimed to systematically analyze the research status, hotspots, and trends of oncolytic virotherapy (OV) for hepatocellular carcinoma (HCC) from 2000 to mid-2025, scientifically predict future directions, facilitate clinical translation, and provide a reference for subsequent studies in this field. Based on the Web of Science Core Collection and Scopus databases, bibliometric methods were adopted combined with visualization analyses using R software (version 4.5.1), VOSviewer (version 1.6.19), and CiteSpace (version 6.4.R1). A total of 341 publications were retrieved from the WoSCC database and 624 from the Scopus database. Based on the combined analysis of both databases, the field exhibited a continuous upward trend in publication output. The top four countries in both databases were China, the USA, Germany, and Korea. China ranked first globally with 152 publications in WoSCC and 212 in Scopus, but its international co-authorship rates (13.2% and 17.5%, respectively) were markedly lower than those of the USA (34.4% and 34.9%) and Korea (40.0% and 33.3%). Molecular Therapy is the most influential core journal in this field. Research hotspots focus on four main areas: the mechanisms of oncolytic virus therapy for HCC, the evolution of genetically engineered armed vectors, combination therapies involving oncolytic viruses, and the challenges and breakthroughs in clinical translation. Future advances in this field will likely focus on three key directions: (1) optimizing transgene expression to balance antiviral and antitumor immunity; (2) developing personalized therapeutic strategies based on biomarkers such as immune cell subsets; (3) advancing clinical validation and regulatory approval of combination regimens through multicenter clinical studies. OV for HCC has entered a new integrated stage featuring mechanistic innovation, vector optimization, and precise combination therapy. The clear future directions can provide a well-defined roadmap for clinical translation, which is expected to yield more effective novel therapeutic strategies for HCC.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41995675/"
+    },
+    {
+      "pmid": "41995074",
+      "title": "Causal Caution Before Declaring Superiority of Liver Resection Versus Radiofrequency Ablation for Very Early-Stage Hepatocellular Carcinoma.",
+      "journal": "Journal of investigative surgery : the official journal of the Academy of Surgical Research",
+      "date": "2026 Dec",
+      "authors": [
+        "Shelat VG"
+      ],
+      "abstract": "",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41995074/"
+    }
+  ]
+}
